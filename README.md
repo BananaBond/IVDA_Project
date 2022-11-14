@@ -44,5 +44,6 @@ and
 
 <img src="8_result_2.PNG" alt="drawing" width="800"/>
 
+
 #### References
 [10 Time Series Forecasting Methods We Should Know](https://cprosenjit.medium.com/10-time-series-forecasting-methods-we-should-know-291037d2e285)
