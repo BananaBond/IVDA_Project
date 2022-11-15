@@ -1,36 +1,40 @@
-from flask import Flask, request
+from flask import Flask
+from flask_restx import Resource, Api
+# add the request import
+from flask import request
+
+# instantiate the app
+app = Flask(__name__)
+api = Api(app)
+class Ping(Resource):
+    def get(self):
+        return {
+            'status': 'success',
+            'message': 'pong!'
+        }
+api.add_resource(Ping, '/ping')
+
+from flask import Flask
 from flask_cors import CORS
 from flask_restx import Resource, Api
 from flask_pymongo import PyMongo
 from pymongo.collection import Collection
-
 from .model import Company
-
 # Configure Flask & Flask-PyMongo:
 app = Flask(__name__)
-# allow access from everywhere
+# allow access from any frontend
 cors = CORS()
 cors.init_app(app, resources={r"*": {"origins": "*"}})
+# add your mongodb URI
 app.config["MONGO_URI"] = "mongodb://localhost:27017/companiesdatabase"
 pymongo = PyMongo(app)
-
 # Get a reference to the companies collection.
 companies: Collection = pymongo.db.companies
-
 api = Api(app)
-
-
 class CompaniesList(Resource):
-    def get(self, args=None):
-        args = request.args.to_dict()
-        print(args)
-        if args['category'] == 'All':
-            cursor = companies.find()
-        else:
-            cursor = companies.find(args)
-        return [Company(**doc).to_json() for doc in cursor]
-
-
+      def get(self):
+          cursor = companies.find()
+          return [Company(**doc).to_json() for doc in cursor]
 class Companies(Resource):
     def get(self, id):
         import pandas as pd
@@ -44,7 +48,6 @@ class Companies(Resource):
         profit = company.profit
         # add to df
         profit_df = pd.DataFrame(profit).iloc[::-1]
-
         if args['algorithm'] == 'random':
             # retrieve the profit value from 2021
             prediction_value = int(profit_df["value"].iloc[-1])
@@ -61,7 +64,19 @@ class Companies(Resource):
             # add the value to profit list at position 0
             company.profit.insert(0, {'year': 2022, 'value': prediction_value})
         return company.to_json()
-
-
 api.add_resource(CompaniesList, '/companies')
 api.add_resource(Companies, '/companies/<int:id>')
+
+class CompaniesList(Resource):
+    def get(self, args=None):
+        # retrieve the arguments and convert to a dict
+        args = request.args.to_dict()
+        print(args)
+        # If the user specified category is "All" we retrieve all companies
+        if args['category'] == 'All':
+            cursor = companies.find()
+        # In any other case, we only return the companies where the category applies
+        else:
+            cursor = companies.find(args)
+        # we return all companies as json
+        return [Company(**doc).to_json() for doc in cursor]
