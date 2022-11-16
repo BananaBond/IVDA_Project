@@ -2,52 +2,66 @@
   <div>
     <v-container fluid>
       <v-row>
-        <v-col cols="12" md="12">
+        <!--<v-col cols="12" md="12">
           <v-card>
             Parameters go here
           </v-card>
-        </v-col>
+        </v-col>-->
 
-        <v-col cols="12" md="8">
+        <!--<v-col cols="12" md="8">
           <v-card>
             Overview
           </v-card>
           <OverView/>
-        </v-col>
+        </v-col>-->
 
-        <!-- <v-col cols="12" md="8">
+        <v-col cols="12" md="8" style=" border-collapse :collapse;border-width:0px">
           <v-card-title cols="12" md="8">
             <v-spacer />
             <div class="text-center">
-              <h3 class="headline Black--text text--accent-2">Overview</h3>
-               <div>Some description about the headline</div>
+              <h3 class="headline black--text text--accent-2">Overview of Activity Level</h3>
+               <!--<div>Some description about the headline</div>-->
             </div>
             <v-spacer />
-            <v-card-actions>
-              <v-spacer />
-              <v-btn color="lightblue">Depressed</v-btn>
-              <v-spacer />
-              <v-spacer />
-              <v-btn color="lightblue">Non-Depressed</v-btn>
-              <v-spacer />
-            </v-card-actions>
           </v-card-title>
+          <v-card-actions>
+            <!--<v-spacer />
+            <v-btn color="lightblue">Depressed</v-btn>
+            <v-spacer />
+            <v-spacer />
+            <v-btn color="lightblue">Non-Depressed</v-btn>
+            <v-spacer />-->
+            <select>
+              <option value ="details" selected="selected">Details</option>
+              <option value ="average">Average</option>
+            </select>
+          </v-card-actions>
           <OverView/>
-        </v-col>-->
+        </v-col>
 
 
 
-        <v-col cols="12" md="4">
-          <v-card>
-            Details Align
-          </v-card>
+        <v-col cols="12" md="4" style=" border-collapse :collapse;border-width:0px">
+          <v-card-title cols="12" md="4">
+            <v-spacer />
+            <div class="text-center">
+              <h3 class="headline black--text text--accent-2">Details</h3>
+              <!--<div>Some description about the headline</div>-->
+            </div>
+            <v-spacer />
+          </v-card-title>
           <DetailsAlign/>
         </v-col>
 
-        <v-col cols="12" md="12">
-          <v-card>
-            BoxPlot goes here
-          </v-card>
+        <v-col cols="12" md="12" style=" border-collapse :collapse;border-width:0px">
+          <v-card-title cols="12" md="4">
+            <v-spacer />
+            <div class="text-center">
+              <h3 class="headline black--text text--accent-2">Individual Activity Level</h3>
+              <!--<div>Some description about the headline</div>-->
+            </div>
+            <v-spacer />
+          </v-card-title>
           <BoxPlot/>
         </v-col>
 
