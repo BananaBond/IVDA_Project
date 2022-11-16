@@ -1,3 +1,7 @@
+<link rel="stylesheet" type="text/css" href="css/styles.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+<script src="js/script.js"></script>
+
 <template>
   <div>
     <v-container fluid>
@@ -24,17 +28,25 @@
             </div>
             <v-spacer />
           </v-card-title>
-          <v-card-actions>
+          <v-card-actions cols="12" md="8">
             <!--<v-spacer />
             <v-btn color="lightblue">Depressed</v-btn>
             <v-spacer />
             <v-spacer />
             <v-btn color="lightblue">Non-Depressed</v-btn>
             <v-spacer />-->
-            <select>
-              <option value ="details" selected="selected">Details</option>
+            <!--<select>
+              <option value ="details" selected="selected">Please select here</option>
+              <option value ="details">Details</option>
               <option value ="average">Average</option>
-            </select>
+            </select>-->
+
+            <select name="Select" class="selected">
+              <option value="details" selected="selected" data-skip="1">Please select here</option>
+              <option value="details" data-icon="img/products/iphone.png" data-html-text="details">Overview</option>
+              <option value="average" data-icon="img/products/ipod.png" data-html-text="average">Average</option>
+              </select>
+
           </v-card-actions>
           <OverView/>
         </v-col>
