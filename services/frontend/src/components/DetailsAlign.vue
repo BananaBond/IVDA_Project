@@ -16,20 +16,19 @@ export default {
   },
   methods: {
     drawDetailsAlign() {
-      var trace1 = {
-        x: [1, 2, 3, 4],
-        y: [10, 15, 13, 17],
-        mode: 'markers',
-        type: 'scatter'
+      var Depressed = {
+        x: ["25-29", "30-34", "35-39", "40-44", "45-49", "50-54", "55-59", "60-64", "65-69"],
+        y: [1, 5, 3, 7, 4, 1, 5, 4, 5],
+        type: 'bar'
       };
-      var trace2 = {
-        x: [2, 3, 4, 5],
-        y: [16, 5, 11, 9],
-        mode: 'lines',
-        type: 'scatter'
+      var Non_Depressed = {
+        x: ["25-29", "30-34", "35-39", "40-44", "45-49", "50-54", "55-59", "60-64", "65-69"],
+        y: [6, 5, 1, 5, 6, 1, 2, 5, 6],
+        type: 'bar'
       };
-      var data = [trace1, trace2];
+      var data = [Depressed, Non_Depressed];
       Plotly.newPlot('secondDetailsAlign', data);
+
     }
   }
 }
