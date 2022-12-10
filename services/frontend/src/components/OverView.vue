@@ -7,11 +7,11 @@
 
 <script>
 import Plotly from 'plotly.js/dist/plotly';
-// import csv from '/Users/shivangi/Downloads/generated_dataset/depressed.csv';
-import depressed from '../../../../data-preprocess/data/overview/depressed.json';
-import non_depressed from '../../../../data-preprocess/data/overview/non-depressed.json';
-import times from '../../../../data-preprocess/data/overview/time.json';
-import avg from '../../../../data-preprocess/data/overview/overall-avg.json';
+import depressed from '../../../../data-preprocess/depressed.json';
+import non_depressed from '../../../../data-preprocess/non-depressed.json';
+import times from '../../../../data-preprocess/time.json';
+import avg from '../../../../data-preprocess/overall-avg.json';
+
 
 export default {
   name: "OverView",
@@ -203,6 +203,51 @@ export default {
       };
 
       Plotly.newPlot('firstOverView', data, layout );
+
+
+      var myPlot = document.getElementById('firstOverView')
+
+      myPlot.on('plotly_click', function(data){
+        console.log(data)
+        console.log('clicked')
+        console.log(data.points[0].data.line.color)
+
+        // var pn='',
+        //     tn='',
+        //     colors=[];
+        var tn;
+        // for(var i=0; i < data.points.length; i++){
+        //   pn = data.points[i].pointNumber;
+        //   tn = data.points[i].curveNumber;
+        //   colors = data.points[i].data.line.color;
+        // }
+        // colors[pn] = '#C54C82';
+        // data.points[0].data.line.color = rgb(0,0,0);
+        tn = data.points[0].curveNumber;
+        console.log(tn)
+        // tn = data.points[0].data.name;
+        var update = {'line':{color: '#000000'}};
+        Plotly.restyle('firstOverView', update,tn);
+      });
+
+
+
+      // myPlot.on('plotly_click', function(data){
+      //   console.log(data)
+      //   var pn='';
+      //   var tn='';
+      //   var colors=[];
+      //   var line_colors = [];
+      //   for(var i=0; i < data.points.length; i++){
+      //     pn = data.points[i].pointNumber;
+      //     tn = data.points[i].curveNumber;
+      //     colors = data.points[i].data.marker.color;
+      //     line_colors = data.points[i].data.line.color;
+      //   }
+      //   colors[tn] = '#ffffff';
+      //   var update = {'line':{color: line_colors, size:16}};
+      //   Plotly.restyle('myDiv', update,[pn]);
+      // });
       
       
     }

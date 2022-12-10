@@ -16,11 +16,10 @@
             <v-spacer />
           </v-card-title>
           <v-card-actions cols="12" md="8">
-            <select name="Select" class="selected">
-              <option value="details" selected="selected" data-skip="1">Please select here</option>
-              <option value="details" data-icon="xx.png" data-html-text="details">Overview</option>
-              <option value="average" data-icon="xx.png" data-html-text="average">Average</option>
-              </select>
+          <label for="toggle_button">
+              <span>average</span>
+              <input type="checkbox" id="toggle_button">
+          </label>
           </v-card-actions>
           <OverView/>
         </v-col>
