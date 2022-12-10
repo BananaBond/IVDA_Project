@@ -1,1 +1,1 @@
-[{"gender": 1, "type": "depress", "number": 10}, {"gender": 1, "type": "nondepress", "number": 20}, {"gender": 2, "type": "depress", "number": 13}, {"gender": 2, "type": "nondepress", "number": 12}]
+{"gender_group": [{"gender": 1, "type": "depress", "number": 10}, {"gender": 1, "type": "nondepress", "number": 20}, {"gender": 2, "type": "depress", "number": 13}, {"gender": 2, "type": "nondepress", "number": 12}]}
