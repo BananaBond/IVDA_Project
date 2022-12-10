@@ -231,6 +231,12 @@ export default {
         tn = data.points[0].curveNumber;
         console.log(tn)
         // tn = data.points[0].data.name;
+        var update_ = {'line': {color: 'rgb(169,169,169)'}}
+        for (let i = 0; i < 55; i++) {
+          if (i != 2){
+            Plotly.restyle('firstOverView', update_,i);
+          }
+        }
         var update = {'line':{color: 'rgb(129, 183, 78)'}};
         Plotly.restyle('firstOverView', update,tn);
       });
