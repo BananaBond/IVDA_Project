@@ -6,11 +6,11 @@
   <div>
     <v-container fluid>
       <v-row>
-        <v-col cols="12" md="8" style=" border-collapse :collapse;border-width:0px;background-color: rgb(207, 223, 239);">
+        <v-col cols="12" md="8" style=" border-collapse :collapse;border-width:0px;background-color: rgb(207, 223, 239);padding-bottom: 0%;padding-top:0%;">
           <v-container fluid> 
           <v-row>
-          <v-col cols="12" md="10" style=" border-collapse :collapse;border-width:0px;padding-left: 15%;">
-          <v-card-title cols="12" md="10" style="padding-top:0px">
+          <v-col cols="12" md="10" style=" border-collapse :collapse;border-width:0px;padding-left: 15%;padding-bottom: 0%;">
+          <v-card-title cols="12" md="10" style="padding-top:0px;padding-bottom:0%;">
             <v-spacer />
             <div class="text-center">
               <h3 class="headline black--text text--accent-2"><b>OVERVIEW</b></h3>
@@ -19,7 +19,7 @@
             <v-spacer />
           </v-card-title>
           </v-col>
-          <v-col cols="12" md="2" style=" border-collapse :collapse;border-width:0px;padding-left: 6%;">
+          <v-col cols="12" md="2" style=" border-collapse :collapse;border-width:0px;padding-left: 6%;padding-bottom: 0%;">
           <v-card-actions cols="12" md="2">
           <label for="toggle_button" style="">
               <input type="checkbox" id="toggle_button">
@@ -27,6 +27,15 @@
           </label>
           </v-card-actions>
           </v-col>
+        </v-row>
+        <v-row>
+          <v-col cols="12" md="12" style=" border-collapse :collapse;border-width:0px;padding-top: 0%;padding-bottom: 0%;">
+            <v-spacer />
+            <div>
+              Select a person from activity level graph
+            </div>
+            <v-spacer />
+        </v-col>
         </v-row>
         </v-container>
           <OverView/>
@@ -64,12 +73,11 @@
 
       <v-row>
 
-        <v-col cols="12" md="12" style=" border-collapse :collapse;border-width:0px;background-color: antiquewhite;">
-          <!-- <v-card-title cols="12" md="12">
-            <v-spacer />
+        <v-col cols="12" md="12" style=" border-collapse :collapse;border-width:0px;">
+          <!-- <v-card-title cols="12" md="12"> -->
+            <!-- <v-spacer />
             <div class="text-center">
-              <h3 class="headline black--text text--accent-2">Individual Activity Level</h3>
-              <div>Some description about the headline</div>
+              <h3 class="headline black--text text--accent-2">Select a person from activity level graph</h3>
             </div>
             <v-spacer />
           </v-card-title> -->
