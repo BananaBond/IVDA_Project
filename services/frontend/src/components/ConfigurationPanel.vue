@@ -41,12 +41,6 @@
             </div>
             <v-spacer />
           </v-card-title>
-          <!--
-          <select name="Select" class="selected">
-            <option value="Age" selected="selected" data-skip="1">Select attributes</option>
-            <option value="Age" data-html-text="details">Age</option>
-            <option value="Gender" data-html-text="average">Gender</option>
-          </select> -->
 
           Display Attributes:
           <select name="attributes">
