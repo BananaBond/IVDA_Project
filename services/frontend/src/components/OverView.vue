@@ -7,10 +7,10 @@
 
 <script>
 import Plotly from 'plotly.js/dist/plotly';
-import depressed from '../../../../data-preprocess/depressed.json';
-import non_depressed from '../../../../data-preprocess/non-depressed.json';
-import times from '../../../../data-preprocess/time.json';
-import avg from '../../../../data-preprocess/overall-avg.json';
+import depressed from '../../../../data-preprocess/data/overview/depressed.json';
+import non_depressed from '../../../../data-preprocess/data/overview/non-depressed.json';
+import times from '../../../../data-preprocess/data/overview/time.json';
+import avg from '../../../../data-preprocess/data/overview/overall-avg.json';
 
 export default {
   name: "OverView",
