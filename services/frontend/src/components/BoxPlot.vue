@@ -1,12 +1,12 @@
 <template>
-  <div style="height: 40vh">
-    <div id='thirdBoxPlot' style="height: inherit">
+  <div style="height: 40vh" margin="0 auto" width="1000px">
+    <div id='thirdBoxPlot' cols="12" md="12" style="height: inherit" margin="0">
     </div>
   </div>
 </template>
 
 <script>
-import Plotly from 'plotly.js/dist/plotly';
+import Plotly, { inherits } from 'plotly.js/dist/plotly';
 import activity_level from '../../../../data-preprocess/data/boxplot/condition_1.json';
 // import times from '../../../../data-preprocess/time.json';
 
@@ -114,14 +114,14 @@ export default {
       // Plotly.newPlot('myScatterPlot', data);
       // var config = {responsive: true, displayModeBar: false}
       var layout = {
-        autosize: false,
-        width: 1000,
+        autosize: true,
+        width: inherits,
         height: 500,
-          title: {
+        title: {
           text:'condition_19',
           font: {
-          family: 'Helvetica',
-          size: 24
+            family: 'Helvetica',
+            size: 24
           },
           xref: 'paper',
           x: 0.05,
@@ -133,7 +133,13 @@ export default {
               family: 'Helvetica',
               size: 18,
               color: '#7f7f7f'
-          }
+          },
+          tickvals:['trace 1','trace 2','02:00:00','03:00:00','04:00:00','05:00:00','06:00:00','07:00:00','08:00:00'
+          ,'09:00:00','10:00:00','11:00:00','12:00:00','13:00:00','14:00:00','15:00:00','16:00:00','17:00:00','18:00:00'
+          ,'19:00:00','20:00:00','21:00:00','22:00:00','23:00:00'],
+          ticktext: ['00:00','01:00','02:00','03:00','04:00','05:00','06:00','07:00','08:00'
+          ,'09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00'
+          ,'19:00','20:00','21:00','22:00','23:00']
           },
       },
       yaxis: {

@@ -1,5 +1,5 @@
 <template>
-  <div style="height: 80vh">
+  <div style="height: 70vh">
     <div id='firstOverView' style="height: inherit">
     </div>
   </div>
@@ -7,10 +7,10 @@
 
 <script>
 import Plotly from 'plotly.js/dist/plotly';
-import depressed from '../../../../data-preprocess/depressed.json';
-import non_depressed from '../../../../data-preprocess/non-depressed.json';
-import times from '../../../../data-preprocess/time.json';
-import avg from '../../../../data-preprocess/overall-avg.json';
+import depressed from '../../../../data-preprocess/data/overview/depressed.json';
+import non_depressed from '../../../../data-preprocess/data/overview/non-depressed.json';
+import times from '../../../../data-preprocess/data/overview/time.json';
+import avg from '../../../../data-preprocess/data/overview/overall-avg.json';
 
 
 export default {
@@ -101,7 +101,7 @@ export default {
           type: 'scatter',
           hovertemplate: '%{x}' + ', %{y:.0f}',
           line: {
-            color: 'rgb(102, 178, 255)',
+            color: 'rgba(211,59,44, 0.6)',
             width: 1
           },
           name: "condition " + index,
@@ -122,7 +122,7 @@ export default {
           hovertemplate: '%{x}' + ', %{y:.0f}',
           hoverinfo: "control "+ ind,
           line: {
-            color: 'rgb(204, 153, 255)',
+            color: 'rgba(37,98,166, 0.6)',
             width: 1
           },
           name: "control " + ind,
@@ -141,7 +141,7 @@ export default {
         type: 'scatter',
         hovertemplate: '%{x}' + ', %{y:.0f}',
         line: {
-          color: 'rgb(0, 102, 204)',
+          color: 'rgb(211,59,44)',
           width: 3
         },
         name: "control average",
@@ -155,7 +155,7 @@ export default {
         type: 'scatter',
         hovertemplate: '%{x}' + ', %{y:.0f}',
         line: {
-          color: 'rgb(76, 0, 153)',
+          color: 'rgb(37,98,166)',
           width: 3
         },
         name: "control average",
@@ -166,6 +166,11 @@ export default {
 
 
       var layout = {
+        margin: {
+          r: 20,
+          t: 20,
+          pad: 5
+        },
           title: {
             text:'',
             font: {
@@ -226,7 +231,7 @@ export default {
         tn = data.points[0].curveNumber;
         console.log(tn)
         // tn = data.points[0].data.name;
-        var update = {'line':{color: '#000000'}};
+        var update = {'line':{color: 'rgb(129, 183, 78)'}};
         Plotly.restyle('firstOverView', update,tn);
       });
 
