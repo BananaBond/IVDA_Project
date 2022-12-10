@@ -42,7 +42,7 @@
         </v-col>
 
         <v-col cols="12" md="4" style=" border-collapse :collapse;border-width:0px; background-color: rgb(204, 202, 240);">
-          <v-card-title cols="12" md="4">
+          <v-card-title cols="12" md="4" style="padding-top:0px;padding-bottom:2%;">
             <v-spacer />
             <div class="text-center">
               <h3 class="headline black--text text--accent-2"><b>DETAILS EXPLORATION</b></h3>
@@ -74,13 +74,13 @@
       <v-row>
 
         <v-col cols="12" md="12" style=" border-collapse :collapse;border-width:0px;">
-          <!-- <v-card-title cols="12" md="12"> -->
-            <!-- <v-spacer />
+          <v-card-title cols="12" md="12">
+            <v-spacer />
             <div class="text-center">
-              <h3 class="headline black--text text--accent-2">Select a person from activity level graph</h3>
+              <h3 class="headline black--text text--accent-2">Activity level distribution for <b>CONDITION 3</b></h3>
             </div>
             <v-spacer />
-          </v-card-title> -->
+          </v-card-title>
           <BoxPlot/>
         </v-col>
 
