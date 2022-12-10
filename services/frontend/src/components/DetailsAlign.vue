@@ -9,21 +9,33 @@
 import Plotly, {inherits} from 'plotly.js/dist/plotly';
 //import all_age from '../../../../data-preprocess/data/detailgraph/all_age.json';
 //import all_gender from '../../../../data-preprocess/data/detailgraph/all_gender.json';
-import after_afftype from '../../../../data-preprocess/data/detailgraph/after_afftype.json';
-//import avg from '../../../../data-preprocess/data/detailgraph/overall-avg.json';
+import after_afftype from '../../../../data-preprocess/data/detailgraph/all_afftype_condition_3.json';
+//import after_edu from '../../../../data-preprocess/data/detailgraph/all_edu_condition_3.json';
+//import after_marriage from '../../../../data-preprocess/data/detailgraph/all_marriage_condition_3.json';
+//import after_work from '../../../../data-preprocess/data/detailgraph/all_work_condition_3.json';
 
 
 export default {
   name: "DetailsAlign",
   data: () => ({
-    //PlotData_AgeCondition: {x: [], y: []},
-    //PlotData_AgeControl: {x: [], y: []},
+    PlotData_AgeCondition: {x: [], y: []},
+    PlotData_AgeControl: {x: [], y: []},
     PlotData_GenderCondition: {x: [], y: []},
     PlotData_GenderControl: {x: [], y: []},
     PlotData_YequalX: {x: [], y: []},
     PlotData_Afftype1: {x: [], y: []},
     PlotData_Afftype2: {x: [], y: []},
     PlotData_Afftype3: {x: [], y: []},
+    PlotData_Afftype_3: {x: [], y: []},
+    PlotData_Edu_6_10: {x: [], y: []},
+    PlotData_Edu_11_15: {x: [], y: []},
+    PlotData_Edu_3: {x: [], y: []},
+    PlotData_Marriage_Y: {x: [], y: []},
+    PlotData_Marriage_N: {x: [], y: []},
+    PlotData_Marriage_3: {x: [], y: []},
+    PlotData_Work_Y: {x: [], y: []},
+    PlotData_Work_N: {x: [], y: []},
+    PlotData_Work_3: {x: [], y: []},
 
     //arrData: ['Age', 'Gender']
   }),
@@ -34,10 +46,12 @@ export default {
     //this.getAgeData()
     //this.getGenderData()
     this.getAfftypeData()
+    //this.getEduData()
+    //this.getMarriageData()
+    //this.getWorkData()
   },
   methods: {
-
-    /*
+/*
     getAgeData() {
 
       var ageGroup_length = all_age["age_group"].length
@@ -65,7 +79,7 @@ export default {
         type: 'bar',
         name: 'Depressed',
         marker: {
-          color: 'rgb(8,48,107)',
+          color: 'rgb(211,59,44)',
         }
       };
 
@@ -75,7 +89,7 @@ export default {
         type: 'bar',
         name: 'Non-Depressed',
         marker: {
-          color: 'rgb(204, 153, 255)'
+          color: 'rgb(37,98,166)'
         }
       };
 
@@ -90,6 +104,17 @@ export default {
           xref: 'paper',
           x: 0.05,
         },
+        legend: {
+          "orientation": "h",
+          x: 0,
+          y: 1.2,
+          traceorder: 'normal',
+          font: {
+            family: 'sans-serif',
+            size: 12,
+            color: '#000'
+          },
+        },
         xaxis: {
           tickangle: -45,
           title: {
@@ -103,7 +128,7 @@ export default {
         },
         yaxis: {
           title: {
-            text: 'Count',
+            text: 'The Number of People',
             font: {
               family: 'Helvetica',
               size: 16,
@@ -225,13 +250,17 @@ export default {
       Plotly.newPlot('secondDetailsAlign', data, layout)
     },*/
 
+
     getAfftypeData() {
       var afftypeGroup_length = after_afftype["afftype"].length
       console.log(afftypeGroup_length)
 
       for (var afftypeGroup_number = 0; afftypeGroup_number < afftypeGroup_length; afftypeGroup_number++) {
         //this.PlotData_Afftype.id.push(after_afftype["afftype"][afftypeGroup_number]["number"])
-        if (after_afftype["afftype"][afftypeGroup_number]["afftype"] === 1.0) {
+        if (after_afftype["afftype"][afftypeGroup_number]["number"] === 'condition_3') {
+          this.PlotData_Afftype_3.x.push(after_afftype["afftype"][afftypeGroup_number]["madrs1"])
+          this.PlotData_Afftype_3.y.push(after_afftype["afftype"][afftypeGroup_number]["madrs2"])
+        } else if (after_afftype["afftype"][afftypeGroup_number]["afftype"] === 1.0) {
           this.PlotData_Afftype1.x.push(after_afftype["afftype"][afftypeGroup_number]["madrs1"])
           this.PlotData_Afftype1.y.push(after_afftype["afftype"][afftypeGroup_number]["madrs2"])
         } else if (after_afftype["afftype"][afftypeGroup_number]["afftype"] === 2.0){
@@ -261,14 +290,14 @@ export default {
         //mode: 'markers',
         mode: 'markers',
         type: 'scatter',
-        name: 'bipolar II',
+        name: 'Bipolar II',
         //width: 0.2,
         //orientation: 'h',
         //text: this.PlotData_GenderCondition.y.map(String),
         //textposition: 'auto',
         marker: {
           color: 'rgba(37,90,166, 0.6)',
-          size: 10,
+          size: 15,
         }
       };
       var trace6 = {
@@ -277,14 +306,14 @@ export default {
         //mode: 'markers',
         mode: 'markers',
         type: 'scatter',
-        name: 'unipolar depressive',
+        name: 'Unipolar Depressive',
         //width: 0.2,
         //orientation: 'h',
         //text: this.PlotData_GenderCondition.y.map(String),
         //textposition: 'auto',
         marker: {
           color: 'rgb(239,137,51)',
-          size: 10,
+          size: 15,
         },
         showlegend: true,
       };
@@ -294,18 +323,41 @@ export default {
         //mode: 'markers',
         mode: 'markers',
         type: 'scatter',
-        name: 'bipolar I',
+        name: 'Bipolar I',
         //width: 0.2,
         //orientation: 'h',
         //text: this.PlotData_GenderCondition.y.map(String),
         //textposition: 'auto',
         marker: {
-          color: 'rgb(102, 178, 55)',
-          size: 10,
+          color: 'rgb(23, 60, 159)',
+          size: 15,
         },
         showlegend: true,
       };
+
       var trace8 = {
+        x: this.PlotData_Afftype_3.x,
+        y: this.PlotData_Afftype_3.y,
+        //mode: 'markers',
+        mode: 'markers',
+        type: 'scatter',
+        name: 'Selected',
+        //width: 0.2,
+        //orientation: 'h',
+        //text: this.PlotData_GenderCondition.y.map(String),
+        //textposition: 'auto',
+        marker: {
+          color: 'rgb(239,137,51)',
+          size: 15,
+          line: {
+            color: 'rgb(129, 183, 78)',
+            width: 3
+          },
+        },
+        showlegend: true,
+      };
+
+      var trace9 = {
         x: this.PlotData_YequalX.x,
         y: this.PlotData_YequalX.y,
         mode: 'lines',
@@ -316,6 +368,7 @@ export default {
         },
         showlegend: false,
       };
+
 
       var layout = {
         barmode:'group',
@@ -372,73 +425,510 @@ export default {
         }
 
       }
-      var data = [trace5, trace6, trace7, trace8];
+      var data = [trace5, trace6, trace7, trace8, trace9];
       Plotly.newPlot('secondDetailsAlign', data, layout)
     },
 
 
+///////////////////////////////
+    /*
+    getEduData() {
+  var eduGroup_length = after_edu["edu"].length
+  console.log(eduGroup_length)
 
-      /*
-      drawDetailsAlign() {
-        var trace1 = {
-          x: this.PlotData_Condition.x,
-          y: this.PlotData_Condition.y,
-          //mode: 'markers',
-          type: 'bar',
-          name: 'Depressed',
-          width: 0.3,
-          bordercolor: {
-            color: 'rgb(102, 178, 255)',
+  for (var eduGroup_number = 0; eduGroup_number < eduGroup_length; eduGroup_number++) {
+    //this.PlotData_Afftype.id.push(after_afftype["afftype"][afftypeGroup_number]["number"])
+    if (after_edu["edu"][eduGroup_number]["number"] === 'condition_3') {
+      this.PlotData_Edu_3.x.push(after_edu["edu"][eduGroup_number]["madrs1"])
+      this.PlotData_Edu_3.y.push(after_edu["edu"][eduGroup_number]["madrs2"])
+    } else if (after_edu["edu"][eduGroup_number]["edu"] === "6-10") {
+      this.PlotData_Edu_6_10.x.push(after_edu["edu"][eduGroup_number]["madrs1"])
+      this.PlotData_Edu_6_10.y.push(after_edu["edu"][eduGroup_number]["madrs2"])
+    } else if (after_edu["edu"][eduGroup_number]["edu"] === "11-15"){
+      this.PlotData_Edu_11_15.x.push(after_edu["edu"][eduGroup_number]["madrs1"])
+      this.PlotData_Edu_11_15.y.push(after_edu["edu"][eduGroup_number]["madrs2"])
+    }
+    console.log(this.PlotData_Edu_3.x)
+
+  }
+
+  for (var i = 10; i < 31; i += 1) {
+    this.PlotData_YequalX.x.push(i);
+    this.PlotData_YequalX.y.push(i);
+  }
+
+  this.drawEduDetailsAlign()
+},
+
+    drawEduDetailsAlign() {
+  var trace5 = {
+    x: this.PlotData_Edu_6_10.x,
+    y: this.PlotData_Edu_6_10.y,
+    //mode: 'markers',
+    mode: 'markers',
+    type: 'scatter',
+    name: '6-10',
+    //width: 0.2,
+    //orientation: 'h',
+    //text: this.PlotData_GenderCondition.y.map(String),
+    //textposition: 'auto',
+    marker: {
+      color: 'rgba(37,90,166, 0.6)',
+      size: 15,
+    }
+  };
+  var trace6 = {
+    x: this.PlotData_Edu_11_15.x,
+    y: this.PlotData_Edu_11_15.y,
+    //mode: 'markers',
+    mode: 'markers',
+    type: 'scatter',
+    name: '11-15',
+    //width: 0.2,
+    //orientation: 'h',
+    //text: this.PlotData_GenderCondition.y.map(String),
+    //textposition: 'auto',
+    marker: {
+      color: 'rgb(239,137,51)',
+      size: 15,
+    },
+    showlegend: true,
+  };
+
+  var trace8 = {
+    x: this.PlotData_Edu_3.x,
+    y: this.PlotData_Edu_3.y,
+    //mode: 'markers',
+    mode: 'markers',
+    type: 'scatter',
+    name: 'Selected',
+    //width: 0.2,
+    //orientation: 'h',
+    //text: this.PlotData_GenderCondition.y.map(String),
+    //textposition: 'auto',
+    marker: {
+      color: 'rgb(37,90,166, 0.6)',
+      size: 15,
+      line: {
+        color: 'rgb(129, 183, 78)',
+        width: 3
+      },
+    },
+    showlegend: true,
+  };
+
+  var trace9 = {
+    x: this.PlotData_YequalX.x,
+    y: this.PlotData_YequalX.y,
+    mode: 'lines',
+    //name: 'Before MADRS = After MADRS',
+    line: {
+      dash: 'dot',
+      width: 1
+    },
+    showlegend: false,
+  };
+
+
+  var layout = {
+    barmode:'group',
+
+    height: inherits,
+    width: 500,
+    legend: {
+      "orientation": "h",
+      x: 0,
+      y: 1.2,
+      traceorder: 'normal',
+      font: {
+        family: 'sans-serif',
+        size: 12,
+        color: '#000'
+      },
+
+    },
+
+
+    title: {
+      text: '',
+      font: {
+        family: 'Helvetica',
+        size: 18
+      },
+      xref: 'paper',
+      x: 0.05,
+    },
+    xaxis: {
+      //tickmode: "array",
+      //tickvals: [1, 2],
+      //ticktext: ['Female', 'Male'],
+      tickangle: -45,
+      tickSize: 15,
+      title: {
+        text: 'MADRS before the Measurement',
+        font: {
+          family: 'Helvetica',
+          size: 16,
+          color: '#7f7f7f'
+        }
+      },
+    },
+    yaxis: {
+      title: {
+        text: 'MADRS after the Measurement',
+        font: {
+          family: 'Helvetica',
+          size: 16,
+          color: '#7f7f7f'
+        }
+      }
+    }
+
+  }
+  var data = [trace5, trace6, trace8, trace9];
+  Plotly.newPlot('secondDetailsAlign', data, layout)
+},*/
+
+//////////////////////////////////////
+/*
+    getMarriageData() {
+      var marriageGroup_length = after_marriage["marriage"].length
+      console.log(marriageGroup_length)
+
+      for (var marriageGroup_number = 0; marriageGroup_number < marriageGroup_length; marriageGroup_number++) {
+        //this.PlotData_Afftype.id.push(after_afftype["afftype"][afftypeGroup_number]["number"])
+        if (after_marriage["marriage"][marriageGroup_number]["number"] === 'condition_3') {
+          this.PlotData_Marriage_3.x.push(after_marriage["marriage"][marriageGroup_number]["madrs1"])
+          this.PlotData_Marriage_3.y.push(after_marriage["marriage"][marriageGroup_number]["madrs2"])
+        } else if (after_marriage["marriage"][marriageGroup_number]["marriage"] === 1.0) {
+          this.PlotData_Marriage_Y.x.push(after_marriage["marriage"][marriageGroup_number]["madrs1"])
+          this.PlotData_Marriage_Y.y.push(after_marriage["marriage"][marriageGroup_number]["madrs2"])
+        } else if (after_marriage["marriage"][marriageGroup_number]["marriage"] === 2.0){
+          this.PlotData_Marriage_N.x.push(after_marriage["marriage"][marriageGroup_number]["madrs1"])
+          this.PlotData_Marriage_N.y.push(after_marriage["marriage"][marriageGroup_number]["madrs2"])
+        }
+        console.log(this.PlotData_Marriage_3.x)
+
+      }
+
+      for (var i = 10; i < 31; i += 1) {
+        this.PlotData_YequalX.x.push(i);
+        this.PlotData_YequalX.y.push(i);
+      }
+      this.drawMarriageDetailsAlign()
+    },
+
+    drawMarriageDetailsAlign() {
+      var trace5 = {
+        x: this.PlotData_Marriage_Y.x,
+        y: this.PlotData_Marriage_Y.y,
+        mode: 'markers',
+        type: 'scatter',
+        name: 'Married or Cohabiting',
+        marker: {
+          color: 'rgba(37,90,166, 0.6)',
+          size: 15,
+        }
+      };
+      var trace6 = {
+        x: this.PlotData_Marriage_N.x,
+        y: this.PlotData_Marriage_N.y,
+        mode: 'markers',
+        type: 'scatter',
+        name: 'Single',
+        marker: {
+          color: 'rgb(239,137,51)',
+          size: 15,
+        },
+        showlegend: true,
+      };
+
+      var trace8 = {
+        x: this.PlotData_Marriage_3.x,
+        y: this.PlotData_Marriage_3.y,
+        mode: 'markers',
+        type: 'scatter',
+        name: 'Selected',
+        marker: {
+          color: 'rgb(239,137,51)',
+          size: 15,
+          line: {
+            color: 'rgb(129, 183, 78)',
+            width: 3
           },
-        };
-        console.log(trace1)
-        var trace2 = {
-          x: this.PlotData_Control.x,
-          y: this.PlotData_Control.y,
-          //mode: 'markers',
-          type: 'bar',
-          name: 'Non-Depressed',
-          width: 0.3,
-          bordercolor: {
-            color: 'rgb(204, 153, 255)',
-          }
-        };
+        },
+        showlegend: true,
+      };
 
-        var layout = {
+      var trace9 = {
+        x: this.PlotData_YequalX.x,
+        y: this.PlotData_YequalX.y,
+        mode: 'lines',
+        line: {
+          dash: 'dot',
+          width: 1
+        },
+        showlegend: false,
+      };
+
+
+      var layout = {
+        barmode:'group',
+
+        height: inherits,
+        width: 500,
+        legend: {
+          "orientation": "h",
+          x: 0,
+          y: 1.2,
+          traceorder: 'normal',
+          font: {
+            family: 'sans-serif',
+            size: 12,
+            color: '#000'
+          },
+
+        },
+
+
+        title: {
+          text: '',
+          font: {
+            family: 'Helvetica',
+            size: 18
+          },
+          xref: 'paper',
+          x: 0.05,
+        },
+        xaxis: {
+          tickangle: -45,
+          tickSize: 15,
           title: {
-            text: '',
+            text: 'MADRS before the Measurement',
             font: {
               family: 'Helvetica',
-              size: 18
-            },
-            xref: 'paper',
-            x: 0.05,
+              size: 16,
+              color: '#7f7f7f'
+            }
           },
-          xaxis: {
-            title: {
-              text: 'Age Group',
-              font: {
-                family: 'Helvetica',
-                size: 16,
-                color: '#7f7f7f'
-              }
-            },
-          },
-          yaxis: {
-            title: {
-              text: 'Count',
-              font: {
-                family: 'Helvetica',
-                size: 16,
-                color: '#7f7f7f'
-              }
+        },
+        yaxis: {
+          title: {
+            text: 'MADRS after the Measurement',
+            font: {
+              family: 'Helvetica',
+              size: 16,
+              color: '#7f7f7f'
             }
           }
-
         }
-        var data = [trace1, trace2];
-        Plotly.newPlot('secondDetailsAlign', data, layout)
-      } */
+
+      }
+      var data = [trace5, trace6, trace8, trace9];
+      Plotly.newPlot('secondDetailsAlign', data, layout)
+    },*/
+    ////////////////////////////////
+
+    /*
+    getWorkData() {
+      var workGroup_length = after_work["work"].length
+      console.log(workGroup_length)
+
+      for (var workGroup_number = 0; workGroup_number < workGroup_length; workGroup_number++) {
+        //this.PlotData_Afftype.id.push(after_afftype["afftype"][afftypeGroup_number]["number"])
+        if (after_work["work"][workGroup_number]["number"] === 'condition_3') {
+          this.PlotData_Work_3.x.push(after_work["work"][workGroup_number]["madrs1"])
+          this.PlotData_Work_3.y.push(after_work["work"][workGroup_number]["madrs2"])
+        } else if (after_work["work"][workGroup_number]["work"] === 1.0) {
+          this.PlotData_Work_Y.x.push(after_work["work"][workGroup_number]["madrs1"])
+          this.PlotData_Work_Y.y.push(after_work["work"][workGroup_number]["madrs2"])
+        } else if (after_work["work"][workGroup_number]["work"] === 2.0){
+          this.PlotData_Work_N.x.push(after_work["work"][workGroup_number]["madrs1"])
+          this.PlotData_Work_N.y.push(after_work["work"][workGroup_number]["madrs2"])
+        }
+        console.log(this.PlotData_Work_3.x)
+
+      }
+
+      for (var i = 10; i < 31; i += 1) {
+        this.PlotData_YequalX.x.push(i);
+        this.PlotData_YequalX.y.push(i);
+      }
+      this.drawWorkDetailsAlign()
+    },
+
+    drawWorkDetailsAlign() {
+      var trace5 = {
+        x: this.PlotData_Work_Y.x,
+        y: this.PlotData_Work_Y.y,
+        mode: 'markers',
+        type: 'scatter',
+        name: 'Working or Studying',
+        marker: {
+          color: 'rgba(37,90,166, 0.6)',
+          size: 15,
+        }
+      };
+      var trace6 = {
+        x: this.PlotData_Work_N.x,
+        y: this.PlotData_Work_N.y,
+        mode: 'markers',
+        type: 'scatter',
+        name: 'Unemployed/Sick Leave/Pension',
+        marker: {
+          color: 'rgb(239,137,51)',
+          size: 15,
+        },
+        showlegend: true,
+      };
+
+      var trace8 = {
+        x: this.PlotData_Work_3.x,
+        y: this.PlotData_Work_3.y,
+        mode: 'markers',
+        type: 'scatter',
+        name: 'Selected',
+        marker: {
+          color: 'rgb(239,137,51)',
+          size: 15,
+          line: {
+            color: 'rgb(129, 183, 78)',
+            width: 3
+          },
+        },
+        showlegend: true,
+      };
+
+      var trace9 = {
+        x: this.PlotData_YequalX.x,
+        y: this.PlotData_YequalX.y,
+        mode: 'lines',
+        line: {
+          dash: 'dot',
+          width: 1
+        },
+        showlegend: false,
+      };
+
+
+      var layout = {
+        barmode:'group',
+
+        height: inherits,
+        width: 500,
+        legend: {
+          "orientation": "h",
+          x: 0,
+          y: 1.2,
+          traceorder: 'normal',
+          font: {
+            family: 'sans-serif',
+            size: 12,
+            color: '#000'
+          },
+
+        },
+
+
+        title: {
+          text: '',
+          font: {
+            family: 'Helvetica',
+            size: 18
+          },
+          xref: 'paper',
+          x: 0.05,
+        },
+        xaxis: {
+          tickangle: -45,
+          tickSize: 15,
+          title: {
+            text: 'MADRS before the Measurement',
+            font: {
+              family: 'Helvetica',
+              size: 16,
+              color: '#7f7f7f'
+            }
+          },
+        },
+        yaxis: {
+          title: {
+            text: 'MADRS after the Measurement',
+            font: {
+              family: 'Helvetica',
+              size: 16,
+              color: '#7f7f7f'
+            }
+          }
+        }
+
+      }
+      var data = [trace5, trace6, trace8, trace9];
+      Plotly.newPlot('secondDetailsAlign', data, layout)
+    },
+    */
+
+    /*
+    drawDetailsAlign() {
+      var trace1 = {
+        x: this.PlotData_Condition.x,
+        y: this.PlotData_Condition.y,
+        //mode: 'markers',
+        type: 'bar',
+        name: 'Depressed',
+        width: 0.3,
+        bordercolor: {
+          color: 'rgb(102, 178, 255)',
+        },
+      };
+      console.log(trace1)
+      var trace2 = {
+        x: this.PlotData_Control.x,
+        y: this.PlotData_Control.y,
+        //mode: 'markers',
+        type: 'bar',
+        name: 'Non-Depressed',
+        width: 0.3,
+        bordercolor: {
+          color: 'rgb(204, 153, 255)',
+        }
+      };
+
+      var layout = {
+        title: {
+          text: '',
+          font: {
+            family: 'Helvetica',
+            size: 18
+          },
+          xref: 'paper',
+          x: 0.05,
+        },
+        xaxis: {
+          title: {
+            text: 'Age Group',
+            font: {
+              family: 'Helvetica',
+              size: 16,
+              color: '#7f7f7f'
+            }
+          },
+        },
+        yaxis: {
+          title: {
+            text: 'Count',
+            font: {
+              family: 'Helvetica',
+              size: 16,
+              color: '#7f7f7f'
+            }
+          }
+        }
+
+      }
+      var data = [trace1, trace2];
+      Plotly.newPlot('secondDetailsAlign', data, layout)
+    } */
   }
 }
 </script>
