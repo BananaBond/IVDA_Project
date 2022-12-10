@@ -7,8 +7,8 @@
 
 <script>
 import Plotly from 'plotly.js/dist/plotly';
-// import depressed from '/Users/shivangi/Downloads/generated_dataset/depressed.json';
-// import times from '/Users/shivangi/Downloads/generated_dataset/time.json';
+import activity_level from '../../../../data-preprocess/data/boxplot/condition_1.json';
+// import times from '../../../../data-preprocess/time.json';
 
 export default {
   name: "BoxPlot",
@@ -18,24 +18,9 @@ export default {
     activity_levels: {},
   }),
   mounted() {
-    this.fetchData()
+    this.drawScatterPlot()
   },
   methods: {
-    createTimeData(){
-      var arr = [];
-      for (let i=0; i < 10; i++) {
-          arr.push(`0${i}:00`);
-      }
-      for (let i=10; i < 24; i++) {
-          arr.push(`${i}:00`);
-      }
-      return arr
-    },
-  //   async fetchDaysinStudy(person){
-    fetchDaysinStudy(){
-      //need to refactor code to fetch number of days from score table for specific condition person
-      return 15
-    },
   //   async get_activity_levels_for_time(person, time) {
     get_activity_levels_for_time(time) {
       // split_string = whole_string.split(/(\d+)/)
@@ -84,38 +69,15 @@ export default {
       });
       return master_dict
     },
-    async fetchData() {
-      // req URL to retrieve companies from backend
-      // var reqUrl = 'http://127.0.0.1:5000/companies'
-      // console.log("ReqURL " + reqUrl)
-      // await response and data
-      // const response = await fetch(reqUrl)
-      // const responseData = await response.json();
-      // transform data to usable by scatterplot
-      // responseData.forEach((company) => {
-      //   this.ScatterPlotData.x.push(company.employees)
-      //   this.ScatterPlotData.y.push(company.founding_year)
-      // })
-      // after the data is loaded, draw the plot
-      this.times = this.createTimeData()
-      
-
-      // this.activity_levels= this.createActivityData(this.person, this.times)
-      this.activity_levels = this.createActivityData(this.times)
-
-      console.log(this.times)
-      console.log('activity levels', this.activity_levels)
-      this.drawScatterPlot()
-    },
-
-
     drawScatterPlot() {
       var data = []
-      this.times.forEach(time => {
+      console.log(Object.keys(activity_level["boxplot_data"]))
+      Object.keys(activity_level["boxplot_data"]).forEach(time => {
+        // var time_str = time.split(':')[1]
           var new_trace = {
-              y: this.activity_levels[time],
+              y: activity_level["boxplot_data"][time],
               type: 'box',
-              name: time,
+              name: time.key,
               marker: {
                   color: 'rgb(107,174,214)'
               },
@@ -186,8 +148,33 @@ export default {
       }
       };
 
-          Plotly.newPlot('thirdBoxPlot', data, layout);
-      }
+      Plotly.newPlot('thirdBoxPlot', data, layout);
+
+      var box_plot = document.getElementById('firstOverView')
+
+      box_plot.on('plotly_click', function(data){
+        console.log(data)
+        console.log('clicked')
+        console.log(data.points[0].data.line.color)
+
+        // var pn='',
+        //     tn='',
+        //     colors=[];
+        var tn;
+        // for(var i=0; i < data.points.length; i++){
+        //   pn = data.points[i].pointNumber;
+        //   tn = data.points[i].curveNumber;
+        //   colors = data.points[i].data.line.color;
+        // }
+        // colors[pn] = '#C54C82';
+        // data.points[0].data.line.color = rgb(0,0,0);
+        tn = data.points[0].curveNumber;
+        console.log(tn)
+        // tn = data.points[0].data.name;
+        var update = {'line':{color: '#000000'}};
+        Plotly.restyle('thirdBoxPlot', update,tn);
+      });
+    }
   }
 }
 </script>
