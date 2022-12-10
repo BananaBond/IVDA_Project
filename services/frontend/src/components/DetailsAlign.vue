@@ -1,5 +1,5 @@
 <template>
-  <div style="height: 65vh">
+  <div style="height: 67vh">
     <div id='secondDetailsAlign' style="height: inherit">
     </div>
   </div>
@@ -245,7 +245,7 @@ export default {
 
       }
 
-      for (var i = 10; i < 30; i += 1) {
+      for (var i = 10; i < 31; i += 1) {
         this.PlotData_YequalX.x.push(i);
         this.PlotData_YequalX.y.push(i);
       }
@@ -261,13 +261,13 @@ export default {
         //mode: 'markers',
         mode: 'markers',
         type: 'scatter',
-        name: 'afftype',
+        name: 'bipolar II',
         //width: 0.2,
         //orientation: 'h',
         //text: this.PlotData_GenderCondition.y.map(String),
         //textposition: 'auto',
         marker: {
-          color: 'rgb(80, 18, 35)',
+          color: 'rgba(37,90,166, 0.6)',
           size: 10,
         }
       };
@@ -277,15 +277,16 @@ export default {
         //mode: 'markers',
         mode: 'markers',
         type: 'scatter',
-        name: 'afftype',
+        name: 'unipolar depressive',
         //width: 0.2,
         //orientation: 'h',
         //text: this.PlotData_GenderCondition.y.map(String),
         //textposition: 'auto',
         marker: {
-          color: 'rgb(102, 78,   255)',
+          color: 'rgb(239,137,51)',
           size: 10,
-        }
+        },
+        showlegend: true,
       };
       var trace7 = {
         x: this.PlotData_Afftype3.x,
@@ -293,7 +294,7 @@ export default {
         //mode: 'markers',
         mode: 'markers',
         type: 'scatter',
-        name: 'afftype',
+        name: 'bipolar I',
         //width: 0.2,
         //orientation: 'h',
         //text: this.PlotData_GenderCondition.y.map(String),
@@ -301,17 +302,19 @@ export default {
         marker: {
           color: 'rgb(102, 178, 55)',
           size: 10,
-        }
+        },
+        showlegend: true,
       };
       var trace8 = {
         x: this.PlotData_YequalX.x,
         y: this.PlotData_YequalX.y,
         mode: 'lines',
-        name: 'Before MADRS = After MADRS',
+        //name: 'Before MADRS = After MADRS',
         line: {
           dash: 'dot',
           width: 1
-        }
+        },
+        showlegend: false,
       };
 
       var layout = {
@@ -319,13 +322,19 @@ export default {
 
         height: inherits,
         width: 500,
-
-        showlegend: false,
         legend: {
-          x: 1,
-          xanchor: 'right',
-          y: 1
+          "orientation": "h",
+          x: 0,
+          y: 1.2,
+          traceorder: 'normal',
+          font: {
+            family: 'sans-serif',
+            size: 12,
+            color: '#000'
+          },
+
         },
+
 
         title: {
           text: '',
@@ -343,7 +352,7 @@ export default {
           tickangle: -45,
           tickSize: 15,
           title: {
-            text: 'MADRS before the measurement',
+            text: 'MADRS before the Measurement',
             font: {
               family: 'Helvetica',
               size: 16,
@@ -353,7 +362,7 @@ export default {
         },
         yaxis: {
           title: {
-            text: 'MADRS after the measurement',
+            text: 'MADRS after the Measurement',
             font: {
               family: 'Helvetica',
               size: 16,
