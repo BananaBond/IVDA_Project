@@ -75,11 +75,12 @@ export default {
       Object.keys(activity_level["boxplot_data"]).forEach(time => {
         // var time_str = time.split(':')[1]
           var new_trace = {
+              x: "00:00",
               y: activity_level["boxplot_data"][time],
               type: 'box',
               name: time.key,
               marker: {
-                  color: 'rgb(107,174,214)'
+                  color: 'rgb(129, 183, 78)'
               },
               showlegend:false
           }
@@ -114,11 +115,16 @@ export default {
       // Plotly.newPlot('myScatterPlot', data);
       // var config = {responsive: true, displayModeBar: false}
       var layout = {
+        margin: {
+          r: 40,
+          t: 15,
+          pad: 5
+        },
         autosize: true,
         width: inherits,
         height: 500,
         title: {
-          text:'condition_19',
+          // text:'condition_19',
           font: {
             family: 'Helvetica',
             size: 24
@@ -134,13 +140,13 @@ export default {
               size: 18,
               color: '#7f7f7f'
           },
-          tickvals:['trace 1','trace 2','02:00:00','03:00:00','04:00:00','05:00:00','06:00:00','07:00:00','08:00:00'
-          ,'09:00:00','10:00:00','11:00:00','12:00:00','13:00:00','14:00:00','15:00:00','16:00:00','17:00:00','18:00:00'
-          ,'19:00:00','20:00:00','21:00:00','22:00:00','23:00:00'],
+        },
+          tickvals:['trace 0','trace 1','trace 2','trace 3','trace 4','trace 5','trace 6','trace 7','trace 8'
+          ,'trace 9','trace 10','trace 11','trace 12','trace 13','trace 14','trace 15','trace 16','trace 17','trace 18'
+          ,'trace 19','trace 20','trace 21','trace 22','trace 23'],
           ticktext: ['00:00','01:00','02:00','03:00','04:00','05:00','06:00','07:00','08:00'
           ,'09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00'
           ,'19:00','20:00','21:00','22:00','23:00']
-          },
       },
       yaxis: {
           title: {

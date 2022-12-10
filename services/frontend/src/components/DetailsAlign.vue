@@ -1,12 +1,12 @@
 <template>
-  <div style="height: 60vh">
+  <div style="height: 65vh">
     <div id='secondDetailsAlign' style="height: inherit">
     </div>
   </div>
 </template>
 
 <script>
-import Plotly from 'plotly.js/dist/plotly';
+import Plotly, { inherits } from 'plotly.js/dist/plotly';
 //import all_age from '../../../../data-preprocess/data/detailgraph/all_age.json';
 import all_gender from '../../../../data-preprocess/data/detailgraph/all_gender.json';
 //import times from '../../../../data-preprocess/data/detailgraph/time.json';
@@ -161,9 +161,14 @@ export default {
       };
 
       var layout = {
+        margin: {
+          r: 40,
+          t: 20,
+          pad: 5
+        },
         barmode:'group',
 
-        height: 605,
+        height: inherits,
         width: 500,
 
         showlegend: true,
