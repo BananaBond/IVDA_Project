@@ -8,8 +8,8 @@
 <script>
 import Plotly from 'plotly.js/dist/plotly';
 //import all_age from '../../../../data-preprocess/data/detailgraph/all_age.json';
-import all_gender from '../../../../data-preprocess/data/detailgraph/all_gender.json';
-//import times from '../../../../data-preprocess/data/detailgraph/time.json';
+//import all_gender from '../../../../data-preprocess/data/detailgraph/all_gender.json';
+import after_afftype from '../../../../data-preprocess/data/detailgraph/after_afftype.json';
 //import avg from '../../../../data-preprocess/data/detailgraph/overall-avg.json';
 
 
@@ -20,14 +20,20 @@ export default {
     //PlotData_AgeControl: {x: [], y: []},
     PlotData_GenderCondition: {x: [], y: []},
     PlotData_GenderControl: {x: [], y: []},
-    arrData: ['Age', 'Gender']
+    PlotData_YequalX: {x: [], y: []},
+    PlotData_Afftype1: {x: [], y: []},
+    PlotData_Afftype2: {x: [], y: []},
+    PlotData_Afftype3: {x: [], y: []},
+
+    //arrData: ['Age', 'Gender']
   }),
   update: function (){
 
   },
   mounted() {
     //this.getAgeData()
-    this.getGenderData()
+    //this.getGenderData()
+    this.getAfftypeData()
   },
   methods: {
 
@@ -111,6 +117,7 @@ export default {
       Plotly.newPlot('secondDetailsAlign', data, layout)
     },*/
 
+    /*
     getGenderData() {
       var genderGroup_length = all_gender["gender_group"].length
       console.log(genderGroup_length)
@@ -142,7 +149,7 @@ export default {
         text: this.PlotData_GenderCondition.y.map(String),
         textposition: 'auto',
         marker: {
-          color: 'rgb(102, 178, 255)',
+          color: 'rgb(102, 178,   255)',
         }
       };
       var trace4 = {
@@ -211,37 +218,110 @@ export default {
       }
       var data = [trace3, trace4];
       Plotly.newPlot('secondDetailsAlign', data, layout)
-    }
+    },*/
 
+    getAfftypeData() {
+      var afftypeGroup_length = after_afftype["afftype"].length
+      console.log(afftypeGroup_length)
 
+      for (var afftypeGroup_number = 0; afftypeGroup_number < afftypeGroup_length; afftypeGroup_number++) {
+        //this.PlotData_Afftype.id.push(after_afftype["afftype"][afftypeGroup_number]["number"])
+        if (after_afftype["afftype"][afftypeGroup_number]["afftype"] === 1.0) {
+          this.PlotData_Afftype1.x.push(after_afftype["afftype"][afftypeGroup_number]["madrs1"])
+          this.PlotData_Afftype1.y.push(after_afftype["afftype"][afftypeGroup_number]["madrs2"])
+        } else if (after_afftype["afftype"][afftypeGroup_number]["afftype"] === 2.0){
+          this.PlotData_Afftype2.x.push(after_afftype["afftype"][afftypeGroup_number]["madrs1"])
+          this.PlotData_Afftype2.y.push(after_afftype["afftype"][afftypeGroup_number]["madrs2"])
+        } else if (after_afftype["afftype"][afftypeGroup_number]["afftype"] === 3.0){
+          this.PlotData_Afftype3.x.push(after_afftype["afftype"][afftypeGroup_number]["madrs1"])
+          this.PlotData_Afftype3.y.push(after_afftype["afftype"][afftypeGroup_number]["madrs2"])
+        }
+        console.log(this.PlotData_Afftype2.x)
 
-    /*
-    drawDetailsAlign() {
-      var trace1 = {
-        x: this.PlotData_Condition.x,
-        y: this.PlotData_Condition.y,
+      }
+
+      for (var i = 10; i < 30; i += 1) {
+        this.PlotData_YequalX.x.push(i);
+        this.PlotData_YequalX.y.push(i);
+      }
+
+      //console.log(this.PlotData_Afftype.type)
+      this.drawAfftypeDetailsAlign()
+    },
+
+    drawAfftypeDetailsAlign() {
+      var trace5 = {
+        x: this.PlotData_Afftype1.x,
+        y: this.PlotData_Afftype1.y,
         //mode: 'markers',
-        type: 'bar',
-        name: 'Depressed',
-        width: 0.3,
-        bordercolor: {
-          color: 'rgb(102, 178, 255)',
-        },
+        mode: 'markers',
+        type: 'scatter',
+        name: 'afftype',
+        //width: 0.2,
+        //orientation: 'h',
+        //text: this.PlotData_GenderCondition.y.map(String),
+        //textposition: 'auto',
+        marker: {
+          color: 'rgb(80, 18, 35)',
+          size: 10,
+        }
       };
-      console.log(trace1)
-      var trace2 = {
-        x: this.PlotData_Control.x,
-        y: this.PlotData_Control.y,
+      var trace6 = {
+        x: this.PlotData_Afftype2.x,
+        y: this.PlotData_Afftype2.y,
         //mode: 'markers',
-        type: 'bar',
-        name: 'Non-Depressed',
-        width: 0.3,
-        bordercolor: {
-          color: 'rgb(204, 153, 255)',
+        mode: 'markers',
+        type: 'scatter',
+        name: 'afftype',
+        //width: 0.2,
+        //orientation: 'h',
+        //text: this.PlotData_GenderCondition.y.map(String),
+        //textposition: 'auto',
+        marker: {
+          color: 'rgb(102, 78,   255)',
+          size: 10,
+        }
+      };
+      var trace7 = {
+        x: this.PlotData_Afftype3.x,
+        y: this.PlotData_Afftype3.y,
+        //mode: 'markers',
+        mode: 'markers',
+        type: 'scatter',
+        name: 'afftype',
+        //width: 0.2,
+        //orientation: 'h',
+        //text: this.PlotData_GenderCondition.y.map(String),
+        //textposition: 'auto',
+        marker: {
+          color: 'rgb(102, 178, 55)',
+          size: 10,
+        }
+      };
+      var trace8 = {
+        x: this.PlotData_YequalX.x,
+        y: this.PlotData_YequalX.y,
+        mode: 'lines',
+        name: 'Before MADRS = After MADRS',
+        line: {
+          dash: 'dot',
+          width: 1
         }
       };
 
       var layout = {
+        barmode:'group',
+
+        height: 605,
+        width: 500,
+
+        showlegend: false,
+        legend: {
+          x: 1,
+          xanchor: 'right',
+          y: 1
+        },
+
         title: {
           text: '',
           font: {
@@ -252,8 +332,13 @@ export default {
           x: 0.05,
         },
         xaxis: {
+          //tickmode: "array",
+          //tickvals: [1, 2],
+          //ticktext: ['Female', 'Male'],
+          tickangle: -45,
+          tickSize: 15,
           title: {
-            text: 'Age Group',
+            text: 'MADRS before the measurement',
             font: {
               family: 'Helvetica',
               size: 16,
@@ -263,7 +348,7 @@ export default {
         },
         yaxis: {
           title: {
-            text: 'Count',
+            text: 'MADRS after the measurement',
             font: {
               family: 'Helvetica',
               size: 16,
@@ -273,9 +358,73 @@ export default {
         }
 
       }
-      var data = [trace1, trace2];
+      var data = [trace5, trace6, trace7, trace8];
       Plotly.newPlot('secondDetailsAlign', data, layout)
-    } */
+    },
+
+
+
+      /*
+      drawDetailsAlign() {
+        var trace1 = {
+          x: this.PlotData_Condition.x,
+          y: this.PlotData_Condition.y,
+          //mode: 'markers',
+          type: 'bar',
+          name: 'Depressed',
+          width: 0.3,
+          bordercolor: {
+            color: 'rgb(102, 178, 255)',
+          },
+        };
+        console.log(trace1)
+        var trace2 = {
+          x: this.PlotData_Control.x,
+          y: this.PlotData_Control.y,
+          //mode: 'markers',
+          type: 'bar',
+          name: 'Non-Depressed',
+          width: 0.3,
+          bordercolor: {
+            color: 'rgb(204, 153, 255)',
+          }
+        };
+
+        var layout = {
+          title: {
+            text: '',
+            font: {
+              family: 'Helvetica',
+              size: 18
+            },
+            xref: 'paper',
+            x: 0.05,
+          },
+          xaxis: {
+            title: {
+              text: 'Age Group',
+              font: {
+                family: 'Helvetica',
+                size: 16,
+                color: '#7f7f7f'
+              }
+            },
+          },
+          yaxis: {
+            title: {
+              text: 'Count',
+              font: {
+                family: 'Helvetica',
+                size: 16,
+                color: '#7f7f7f'
+              }
+            }
+          }
+
+        }
+        var data = [trace1, trace2];
+        Plotly.newPlot('secondDetailsAlign', data, layout)
+      } */
   }
 }
 </script>
