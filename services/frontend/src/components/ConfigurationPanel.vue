@@ -35,9 +35,9 @@
             <v-spacer />
           </v-card-title>
           <select name="Select" class="selected">
-            <option value="Depressed" selected="selected" data-skip="1">Please select here</option>
-            <option value="Depressed" data-icon="xx.png" data-html-text="details">Depressed</option>
-            <option value="Non-Depressed" data-icon="xx.png" data-html-text="average">Non-Depressed</option>
+            <option value="Age" selected="selected" data-skip="1">Select attributes</option>
+            <option value="Age" data-html-text="details">Age</option>
+            <option value="Gender" data-html-text="average">Gender</option>
           </select>
           <DetailsAlign/>
         </v-col>
@@ -66,6 +66,16 @@ import BoxPlot from './BoxPlot';
 export default {
   components: {OverView, DetailsAlign, BoxPlot},
   data: () => ({
+    OverView:0,
+    DetailsAlign:0,
+    BoxPlot:0
+    //ageGroup: {
+    //  values: ["25-29", "30-34", "35-39", "40-44", "45-49", "50-54", "55-59", "60-64", "65-69"],
+    //},
+    //genderGroup:{
+    //  values: ["Female", "Male"]
+    //}
+
   }),
 }
 </script>

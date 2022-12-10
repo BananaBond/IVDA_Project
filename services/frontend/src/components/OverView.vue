@@ -8,10 +8,10 @@
 <script>
 import Plotly from 'plotly.js/dist/plotly';
 // import csv from '/Users/shivangi/Downloads/generated_dataset/depressed.csv';
-import depressed from '/Users/shivangi/Downloads/generated_dataset/depressed.json';
-import non_depressed from '/Users/shivangi/Downloads/generated_dataset/non-depressed.json';
-import times from '/Users/shivangi/Downloads/generated_dataset/time.json';
-import avg from '/Users/shivangi/Downloads/generated_dataset/overall-avg.json';
+import depressed from '/Users/qiguo/Documents/01 UZH/03 2022 Fall/03 Interactive-Visual Data Analysis/05 Project/IVDA_Project/ivda_03_git/generated_dataset/depressed.json';
+import non_depressed from '/Users/qiguo/Documents/01 UZH/03 2022 Fall/03 Interactive-Visual Data Analysis/05 Project/IVDA_Project/ivda_03_git/generated_dataset/non-depressed.json';
+import times from '/Users/qiguo/Documents/01 UZH/03 2022 Fall/03 Interactive-Visual Data Analysis/05 Project/IVDA_Project/ivda_03_git/generated_dataset/time.json';
+import avg from '/Users/qiguo/Documents/01 UZH/03 2022 Fall/03 Interactive-Visual Data Analysis/05 Project/IVDA_Project/ivda_03_git/generated_dataset/overall-avg.json';
 
 export default {
   name: "OverView",
@@ -80,57 +80,9 @@ export default {
 
         Plotly.newPlot('firstOverview', people_data,
           {title: 'Plotting CSV data from AJAX call'});
-        
+
       },
     drawOverView() {
-      //KATRINE OLD CODE
-      // plotly code comes later here
-      // var trace1 = {
-      //   x: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
-      //   y: [0, 1, 3, 5, 3, 1, 12, 10, 8, 11, 5, 8, 7, 30, 13, 18, 11, 35, 29, 25, 23, 32, 4, 0],
-      //   mode: 'lines+markers',
-      //   type: 'scatter'
-      // };
-      // var trace2 = {
-      //   x: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
-      //   y: [1, 2, 5, 5, 0, 0, 12, 12, 9, 11, 7, 11, 15, 23, 12, 13, 24, 17, 19, 29, 18, 15, 4, 2],
-      //   mode: 'lines+markers',
-      //   type: 'scatter'
-      // };
-      // var trace3 = {
-      //   x: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
-      //   y: [5, 5, 1, 1, 2, 0, 4, 11, 10, 4, 6, 7, 27, 35, 20, 7, 10, 32, 16, 16, 33, 26, 2, 4],
-      //   mode: 'lines+markers',
-      //   type: 'scatter'
-      // };
-      // var data = [trace1, trace2, trace3];
-      // Plotly.newPlot('firstOverView', data);
-
-      //New code for realistic activity levels
-      // var times = this.createTimeData()
-      // var data = []
-      // var condition = []
-      // var control = []
-      // for ( var i = 1 ; i <= 23 ; i++ ) {
-      //   condition[i] = {
-      //     x: times,
-      //     y: this.getActivityLevels(times),
-      //     mode: 'lines',
-      //     type: 'scatter'
-      //   };
-      //   data.push(condition[i])
-      // }
-      // for ( var j = 1 ; j <= 32 ; j++ ) {
-      //   control[j] = {
-      //     x: times,
-      //     y: this.getActivityLevels(times),
-      //     mode: 'lines',
-      //     type: 'scatter'
-      //   };
-      //   data.push(control[j]) 
-      // }
-      // Plotly.newPlot('firstOverView', data);
-
         var control = []
         var condition = []
 
