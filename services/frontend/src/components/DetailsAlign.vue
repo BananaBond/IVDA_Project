@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Plotly, { inherits } from 'plotly.js/dist/plotly';
+import Plotly, {inherits} from 'plotly.js/dist/plotly';
 //import all_age from '../../../../data-preprocess/data/detailgraph/all_age.json';
 //import all_gender from '../../../../data-preprocess/data/detailgraph/all_gender.json';
 import after_afftype from '../../../../data-preprocess/data/detailgraph/after_afftype.json';
@@ -317,7 +317,7 @@ export default {
       var layout = {
         barmode:'group',
 
-        height: 605,
+        height: inherits,
         width: 500,
 
         showlegend: false,
