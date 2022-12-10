@@ -8,10 +8,10 @@
 <script>
 import Plotly from 'plotly.js/dist/plotly';
 // import csv from '/Users/shivangi/Downloads/generated_dataset/depressed.csv';
-import depressed from '/Users/qiguo/Documents/01 UZH/03 2022 Fall/03 Interactive-Visual Data Analysis/05 Project/IVDA_Project/ivda_03_git/generated_dataset/depressed.json';
-import non_depressed from '/Users/qiguo/Documents/01 UZH/03 2022 Fall/03 Interactive-Visual Data Analysis/05 Project/IVDA_Project/ivda_03_git/generated_dataset/non-depressed.json';
-import times from '/Users/qiguo/Documents/01 UZH/03 2022 Fall/03 Interactive-Visual Data Analysis/05 Project/IVDA_Project/ivda_03_git/generated_dataset/time.json';
-import avg from '/Users/qiguo/Documents/01 UZH/03 2022 Fall/03 Interactive-Visual Data Analysis/05 Project/IVDA_Project/ivda_03_git/generated_dataset/overall-avg.json';
+import depressed from '../../../../data-preprocess/data/overview/depressed.json';
+import non_depressed from '../../../../data-preprocess/data/overview/non-depressed.json';
+import times from '../../../../data-preprocess/data/overview/time.json';
+import avg from '../../../../data-preprocess/data/overview/overall-avg.json';
 
 export default {
   name: "OverView",

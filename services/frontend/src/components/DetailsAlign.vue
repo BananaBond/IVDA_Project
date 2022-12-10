@@ -7,10 +7,10 @@
 
 <script>
 import Plotly from 'plotly.js/dist/plotly';
-//import all_age from '/Users/qiguo/Documents/01 UZH/03 2022 Fall/03 Interactive-Visual Data Analysis/05 Project/IVDA_Project/ivda_03_git/generated_dataset/all_age.json';
-import all_gender from '/Users/qiguo/Documents/01 UZH/03 2022 Fall/03 Interactive-Visual Data Analysis/05 Project/IVDA_Project/ivda_03_git/generated_dataset/all_gender.json';
-//import times from '/Users/qiguo/Documents/01 UZH/03 2022 Fall/03 Interactive-Visual Data Analysis/05 Project/IVDA_Project/ivda_03_git/generated_dataset/time.json';
-//import avg from '/Users/qiguo/Documents/01 UZH/03 2022 Fall/03 Interactive-Visual Data Analysis/05 Project/IVDA_Project/ivda_03_git/generated_dataset/overall-avg.json';
+//import all_age from '../../../../data-preprocess/data/detailgraph/all_age.json';
+import all_gender from '../../../../data-preprocess/data/detailgraph/all_gender.json';
+//import times from '../../../../data-preprocess/data/detailgraph/time.json';
+//import avg from '../../../../data-preprocess/data/detailgraph/overall-avg.json';
 
 
 export default {
