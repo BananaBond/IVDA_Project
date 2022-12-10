@@ -6,29 +6,37 @@
   <div>
     <v-container fluid>
       <v-row>
-        <v-col cols="12" md="8" style=" border-collapse :collapse;border-width:0px">
-          <v-card-title cols="12" md="8">
+        <v-col cols="12" md="8" style=" border-collapse :collapse;border-width:0px;background-color: antiquewhite;">
+          <v-container fluid> 
+          <v-row>
+          <v-col cols="12" md="10" style=" border-collapse :collapse;border-width:0px;padding-left: 15%;background-color: antiquewhite;">
+          <v-card-title cols="12" md="10" style="padding-top:0px">
             <v-spacer />
             <div class="text-center">
-              <h3 class="headline black--text text--accent-2">Overview of Activity Level</h3>
+              <h3 class="headline black--text text--accent-2">OVERVIEW</h3>
                <!--<div>Some description about the headline</div>-->
             </div>
             <v-spacer />
           </v-card-title>
-          <v-card-actions cols="12" md="8">
-          <label for="toggle_button">
-              <span>average</span>
+          </v-col>
+          <v-col cols="12" md="2" style=" border-collapse :collapse;border-width:0px;padding-left: 6%;background-color: antiquewhite;">
+          <v-card-actions cols="12" md="2">
+          <label for="toggle_button" style="">
               <input type="checkbox" id="toggle_button">
+              <span> Average</span>
           </label>
           </v-card-actions>
+          </v-col>
+        </v-row>
+        </v-container>
           <OverView/>
         </v-col>
 
-        <v-col cols="12" md="4" style=" border-collapse :collapse;border-width:0px">
+        <v-col cols="12" md="4" style=" border-collapse :collapse;border-width:0px; background-color: antiquewhite;">
           <v-card-title cols="12" md="4">
             <v-spacer />
             <div class="text-center">
-              <h3 class="headline black--text text--accent-2">Detail Exploration</h3>
+              <h3 class="headline black--text text--accent-2">DETAILS EXPLORATION</h3>
               <!--<div>Some description about the headline</div>-->
             </div>
             <v-spacer />
@@ -40,16 +48,19 @@
           </select>
           <DetailsAlign/>
         </v-col>
+      </v-row>
 
-        <v-col cols="12" md="12" style=" border-collapse :collapse;border-width:0px">
-          <v-card-title cols="12" md="4">
+      <v-row>
+
+        <v-col cols="12" md="12" style=" border-collapse :collapse;border-width:0px;background-color: antiquewhite;">
+          <!-- <v-card-title cols="12" md="12">
             <v-spacer />
             <div class="text-center">
               <h3 class="headline black--text text--accent-2">Individual Activity Level</h3>
-              <!--<div>Some description about the headline</div>-->
+              <div>Some description about the headline</div>
             </div>
             <v-spacer />
-          </v-card-title>
+          </v-card-title> -->
           <BoxPlot/>
         </v-col>
 
