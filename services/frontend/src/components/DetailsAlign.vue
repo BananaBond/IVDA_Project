@@ -1,5 +1,5 @@
 <template>
-  <div style="height: 67vh">
+  <div style="height: 70vh">
     <div id='secondDetailsAlign' style="height: inherit">
     </div>
   </div>

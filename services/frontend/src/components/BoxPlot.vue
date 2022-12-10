@@ -7,7 +7,7 @@
 
 <script>
 import Plotly, { inherits } from 'plotly.js/dist/plotly';
-import activity_level from '../../../../data-preprocess/data/boxplot/condition_1.json';
+import activity_level from '../../../../data-preprocess/data/boxplot/condition_3.json';
 // import times from '../../../../data-preprocess/time.json';
 
 export default {

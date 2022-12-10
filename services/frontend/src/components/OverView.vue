@@ -11,7 +11,8 @@ import Plotly from 'plotly.js/dist/plotly';
 // import non_depressed from '../../../../data-preprocess/data/overview/non-depressed.json';
 import depressed from '../../../../data-preprocess/data/overview/shifted/depressed.json';
 import non_depressed from '../../../../data-preprocess/data/overview/shifted/non-depressed.json';
-import times from '../../../../data-preprocess/data/overview/time.json';
+// import times from '../../../../data-preprocess/data/overview/time.json';
+import times from '../../../../data-preprocess/data/overview/shifted/shifted_time.json';
 // import avg from '../../../../data-preprocess/data/overview/overall-avg.json';
 
 
@@ -125,8 +126,8 @@ export default {
             type: 'scatter',
             hovertemplate: '%{x}' + ', %{y:.0f}',
             line: {
-              color: 'rgba(129, 183, 78,0.5)',
-              width: 3
+              color: 'rgba(129, 183, 78,0.8)',
+              width: 2
             },
             name: "condition " + index,
             showlegend: false
@@ -140,8 +141,8 @@ export default {
             type: 'scatter',
             hovertemplate: '%{x}' + ', %{y:.0f}',
             line: {
-              color: 'rgb(129, 183, 78)',
-              width: 3
+              color: 'rgb(0,100,0, 0.8)',
+              width: 4
             },
             name: "condition " + index,
             showlegend: false
@@ -198,8 +199,8 @@ export default {
             hovertemplate: '%{x}' + ', %{y:.0f}',
             hoverinfo: "control "+ ind,
             line: {
-              color: 'rgba(129, 183, 78, 0.6)',
-              width: 3
+              color: 'rgba(129, 183, 78, 0.8)',
+              width: 2
             },
             name: "control " + ind,
             showlegend: false
