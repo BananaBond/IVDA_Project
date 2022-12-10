@@ -41,11 +41,23 @@
             </div>
             <v-spacer />
           </v-card-title>
+          <!--
           <select name="Select" class="selected">
             <option value="Age" selected="selected" data-skip="1">Select attributes</option>
             <option value="Age" data-html-text="details">Age</option>
             <option value="Gender" data-html-text="average">Gender</option>
+          </select> -->
+
+          Display Attributes:
+          <select name="attributes">
+            <option value="0"> Age</option>
+            <option value="1"> Gender</option>
+            <option value="2"> Depression Type</option>
+            <option value="3"> Education Years</option>
+            <option value="4"> Marital Status</option>
+            <option value="5"> Work Status</option>
           </select>
+
           <DetailsAlign/>
         </v-col>
       </v-row>
@@ -79,13 +91,7 @@ export default {
     OverView:0,
     DetailsAlign:0,
     BoxPlot:0
-    //ageGroup: {
-    //  values: ["25-29", "30-34", "35-39", "40-44", "45-49", "50-54", "55-59", "60-64", "65-69"],
-    //},
-    //genderGroup:{
-    //  values: ["Female", "Male"]
-    //}
-
   }),
+
 }
 </script>
