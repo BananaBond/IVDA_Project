@@ -12,7 +12,10 @@ import all_age from '../../../../data-preprocess/data/detailgraph/all_age.json';
 //import after_afftype from '../../../../data-preprocess/data/detailgraph/all_afftype_condition_3.json';
 //import after_edu from '../../../../data-preprocess/data/detailgraph/all_edu_condition_3.json';
 //import after_marriage from '../../../../data-preprocess/data/detailgraph/all_marriage_condition_3.json';
-//mport after_work from '../../../../data-preprocess/data/detailgraph/all_work_condition_3.json';
+
+//import after_work from '../../../../data-preprocess/data/detailgraph/all_work_condition_3.json';
+import after_age from '../../../../data-preprocess/data/detailgraph/all_age_condition_3.json';
+//import after_gender from '../../../../data-preprocess/data/detailgraph/all_gender_condition_3.json';
 
 
 export default {
@@ -36,6 +39,12 @@ export default {
     PlotData_Work_Y: {x: [], y: []},
     PlotData_Work_N: {x: [], y: []},
     PlotData_Work_3: {x: [], y: []},
+    PlotData_AfterAgeCondition: {x: [], y: []},
+    PlotData_AfterAgeControl: {x: [], y: []},
+    PlotData_AfterAge_3: {x: [], y: []},
+    PlotData_AfterGenderCondition: {x: [], y: []},
+    PlotData_AfterGenderControl: {x: [], y: []},
+    PlotData_AfterGender_3: {x: [], y: []},
 
     //arrData: ['Age', 'Gender']
   }),
@@ -49,6 +58,8 @@ export default {
     //this.getEduData()
     //this.getMarriageData()
     //this.getWorkData()
+    this.getAfterAgeData()
+    //this.getAfterGenderData()
   },
   methods: {
     
@@ -155,6 +166,96 @@ export default {
       var data = [trace1, trace2];
       Plotly.newPlot('secondDetailsAlign', data, layout)
     },
+
+        getAfterAgeData() {
+
+          var ageGroup_length = after_age["age_group"].length
+          console.log(ageGroup_length)
+
+          for (var ageGroup_number = 0; ageGroup_number < ageGroup_length; ageGroup_number++) {
+            if (after_age["age_group"][ageGroup_number]["type"] === "depress") {
+              this.PlotData_AgeCondition.x.push(after_age["age_group"][ageGroup_number]["age"])
+              this.PlotData_AgeCondition.y.push(after_age["age_group"][ageGroup_number]["number"])
+            } else {
+              this.PlotData_AgeControl.x.push(after_age["age_group"][ageGroup_number]["age"])
+              this.PlotData_AgeControl.y.push(after_age["age_group"][ageGroup_number]["number"])
+            }
+          }
+          console.log(this.PlotData_AgeCondition)
+          console.log(this.PlotData_AgeControl)
+          this.drawAgeDetailsAlign()
+        },
+
+        drawAgeDetailsAlign() {
+          var trace1 = {
+            x: this.PlotData_AgeCondition.x,
+            y: this.PlotData_AgeCondition.y,
+            //mode: 'markers',
+            type: 'bar',
+            name: 'Depressed',
+            marker: {
+              color: 'rgb(211,59,44)',
+            }
+          };
+
+          var trace2 = {
+            x: this.PlotData_AgeControl.x,
+            y: this.PlotData_AgeControl.y,
+            type: 'bar',
+            name: 'Non-Depressed',
+            marker: {
+              color: 'rgb(37,98,166)'
+            }
+          };
+
+          var layout = {
+            barmode:'group',
+            title: {
+              text: '',
+              font: {
+                family: 'Helvetica',
+                size: 18
+              },
+              xref: 'paper',
+              x: 0.05,
+            },
+            legend: {
+              "orientation": "h",
+              x: 0,
+              y: 1.2,
+              traceorder: 'normal',
+              font: {
+                family: 'sans-serif',
+                size: 12,
+                color: '#000'
+              },
+            },
+            xaxis: {
+              tickangle: -45,
+              title: {
+                text: 'Age Group',
+                font: {
+                  family: 'Helvetica',
+                  size: 16,
+                  color: '#7f7f7f'
+                }
+              },
+            },
+            yaxis: {
+              title: {
+                text: 'The Number of People',
+                font: {
+                  family: 'Helvetica',
+                  size: 16,
+                  color: '#7f7f7f'
+                }
+              }
+            }
+
+          }
+          var data = [trace1, trace2];
+          Plotly.newPlot('secondDetailsAlign', data, layout)
+        },
 
     /*
     getGenderData() {
