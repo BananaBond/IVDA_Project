@@ -7,7 +7,7 @@
 
 <script>
 import Plotly, {inherits} from 'plotly.js/dist/plotly';
-import all_age from '../../../../data-preprocess/data/detailgraph/all_age.json';
+//import all_age from '../../../../data-preprocess/data/detailgraph/all_age.json';
 //import all_gender from '../../../../data-preprocess/data/detailgraph/all_gender.json';
 //import after_afftype from '../../../../data-preprocess/data/detailgraph/all_afftype_condition_3.json';
 //import after_edu from '../../../../data-preprocess/data/detailgraph/all_edu_condition_3.json';
@@ -41,10 +41,8 @@ export default {
     PlotData_Work_3: {x: [], y: []},
     PlotData_AfterAgeCondition: {x: [], y: []},
     PlotData_AfterAgeControl: {x: [], y: []},
-    PlotData_AfterAge_3: {x: [], y: []},
     PlotData_AfterGenderCondition: {x: [], y: []},
     PlotData_AfterGenderControl: {x: [], y: []},
-    PlotData_AfterGender_3: {x: [], y: []},
 
     //arrData: ['Age', 'Gender']
   }),
@@ -52,7 +50,7 @@ export default {
 
   },
   mounted() {
-    this.getAgeData()
+    //this.getAgeData()
     //this.getGenderData()
     //this.getAfftypeData()
     //this.getEduData()
@@ -62,7 +60,7 @@ export default {
     //this.getAfterGenderData()
   },
   methods: {
-    
+    /*
     getAgeData() {
 
       var ageGroup_length = all_age["age_group"].length
@@ -165,31 +163,31 @@ export default {
       }
       var data = [trace1, trace2];
       Plotly.newPlot('secondDetailsAlign', data, layout)
-    },
+    },*/
 
         getAfterAgeData() {
 
-          var ageGroup_length = after_age["age_group"].length
-          console.log(ageGroup_length)
+          var ageAfterGroup_length = after_age["age_group"].length
+          console.log(ageAfterGroup_length)
 
-          for (var ageGroup_number = 0; ageGroup_number < ageGroup_length; ageGroup_number++) {
-            if (after_age["age_group"][ageGroup_number]["type"] === "depress") {
-              this.PlotData_AgeCondition.x.push(after_age["age_group"][ageGroup_number]["age"])
-              this.PlotData_AgeCondition.y.push(after_age["age_group"][ageGroup_number]["number"])
+          for (var ageAfterGroup_number = 0; ageAfterGroup_number < ageAfterGroup_length; ageAfterGroup_number++) {
+            if (after_age["age_group"][ageAfterGroup_number]["type"] === "depress") {
+              this.PlotData_AfterAgeCondition.x.push(after_age["age_group"][ageAfterGroup_number]["age"])
+              this.PlotData_AfterAgeCondition.y.push(after_age["age_group"][ageAfterGroup_number]["number"])
             } else {
-              this.PlotData_AgeControl.x.push(after_age["age_group"][ageGroup_number]["age"])
-              this.PlotData_AgeControl.y.push(after_age["age_group"][ageGroup_number]["number"])
+              this.PlotData_AfterAgeControl.x.push(after_age["age_group"][ageAfterGroup_number]["age"])
+              this.PlotData_AfterAgeControl.y.push(after_age["age_group"][ageAfterGroup_number]["number"])
             }
           }
-          console.log(this.PlotData_AgeCondition)
-          console.log(this.PlotData_AgeControl)
-          this.drawAgeDetailsAlign()
+          console.log(this.PlotData_AfterAgeCondition)
+          console.log(this.PlotData_AfterAgeControl)
+          this.drawAfterAgeDetailsAlign()
         },
 
-        drawAgeDetailsAlign() {
-          var trace1 = {
-            x: this.PlotData_AgeCondition.x,
-            y: this.PlotData_AgeCondition.y,
+        drawAfterAgeDetailsAlign() {
+          var trace10 = {
+            x: this.PlotData_AfterAgeCondition.x,
+            y: this.PlotData_AfterAgeCondition.y,
             //mode: 'markers',
             type: 'bar',
             name: 'Depressed',
@@ -198,9 +196,9 @@ export default {
             }
           };
 
-          var trace2 = {
-            x: this.PlotData_AgeControl.x,
-            y: this.PlotData_AgeControl.y,
+          var trace11 = {
+            x: this.PlotData_AfterAgeControl.x,
+            y: this.PlotData_AfterAgeControl.y,
             type: 'bar',
             name: 'Non-Depressed',
             marker: {
@@ -210,6 +208,15 @@ export default {
 
           var layout = {
             barmode:'group',
+            margin: {
+              r: 50,
+              t: 20,
+              pad: 0
+            },
+            //barmode:'group',
+
+            height: inherits,
+            width: 475,
             title: {
               text: '',
               font: {
@@ -253,7 +260,7 @@ export default {
             }
 
           }
-          var data = [trace1, trace2];
+          var data = [trace10, trace11];
           Plotly.newPlot('secondDetailsAlign', data, layout)
         },
 
