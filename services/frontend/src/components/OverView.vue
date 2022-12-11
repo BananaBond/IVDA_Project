@@ -117,8 +117,8 @@ export default {
 
     //   for (var cond_number=0; cond_number<depressed_length; cond_number++){
     //     var index = parseInt(depressed["files"][cond_number]["file"].split("_")[1])
-    //     if (index == 12 || index == 16 || index == 19 || index == 20 || index == 22 || index == 6 || 
-    //     index == 7 || index == 8 || index == 9){
+    //     if (index == 11 || index == 12 || index == 15 || index == 8 || index == 9 || index == 6 || 
+    //     index == 7 || index == 16 || index == 23 || index == 13){
     //       condition[index-1] = {
     //         x: times["time"],
     //         y: depressed["files"][cond_number]["activity_level"],
@@ -128,21 +128,6 @@ export default {
     //         line: {
     //           color: 'rgba(129, 183, 78,0.8)',
     //           width: 2
-    //         },
-    //         name: "condition " + index,
-    //         showlegend: false
-    //       }
-    //     }
-    //     else if (index == 3){
-    //       condition[index-1] = {
-    //         x: times["time"],
-    //         y: depressed["files"][cond_number]["activity_level"],
-    //         mode: 'lines',
-    //         type: 'scatter',
-    //         hovertemplate: '%{x}' + ', %{y:.0f}',
-    //         line: {
-    //           color: 'rgb(0,100,0, 0.8)',
-    //           width: 4
     //         },
     //         name: "condition " + index,
     //         showlegend: false
@@ -226,7 +211,7 @@ export default {
       // for (var control_number=0; control_number<non_depressed_length; control_number++){
       //   var ind = parseInt(non_depressed["files"][control_number]["file"].split("_")[1])
       //   console.log(ind)
-      //   if (index == 1  || index == 3 || index == 12){
+      //   if (index == 4  || index == 6 || index == 19){
       //     control[ind-1] = {
       //       x: times["time"],
       //       y: non_depressed["files"][control_number]["activity_level"],
@@ -238,6 +223,22 @@ export default {
       //         color: 'rgba(129, 183, 78, 0.8)',
       //         width: 2
       //       },
+      //       name: "control " + ind,
+      //       showlegend: false
+      //     }
+      //   }
+      //   else if (index == 31){
+      //     control[ind-1] = {
+      //       x: times["time"],
+      //       y: non_depressed["files"][control_number]["activity_level"],
+      //       mode: 'lines',
+      //       type: 'scatter',
+      //       hovertemplate: '%{x}' + ', %{y:.0f}',
+      //       hoverinfo: "control "+ ind,
+      //       line: {
+      //           color: 'rgb(0,100,0, 0.8)',
+      //           width: 4
+      //         },
       //       name: "control " + ind,
       //       showlegend: false
       //     }
@@ -393,7 +394,7 @@ export default {
           // tn = data.points[0].data.name;
           var update_ = {'line': {color: 'rgba(169,169,169,0.5)', width: 1}}
           for (let i = 0; i < 55; i++) {
-            if (i != 34){
+            if (i != 30){
               Plotly.restyle('firstOverView', update_,i);
             }
           }
