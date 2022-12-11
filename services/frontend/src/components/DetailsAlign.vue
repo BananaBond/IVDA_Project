@@ -9,13 +9,13 @@
 import Plotly, {inherits} from 'plotly.js/dist/plotly';
 //import all_age from '../../../../data-preprocess/data/detailgraph/all_age.json';
 //import all_gender from '../../../../data-preprocess/data/detailgraph/all_gender.json';
-//import after_afftype from '../../../../data-preprocess/data/detailgraph/all_afftype_condition_3.json';
-//import after_edu from '../../../../data-preprocess/data/detailgraph/all_edu_condition_3.json';
-//import after_marriage from '../../../../data-preprocess/data/detailgraph/all_marriage_condition_3.json';
+//import after_afftype from '../../../../data-preprocess/data/detailgraph/all_afftype_control_31.json';
+//import after_edu from '../../../../data-preprocess/data/detailgraph/all_edu_control_31.json';
+//import after_marriage from '../../../../data-preprocess/data/detailgraph/all_marriage_control_31.json';
 
-//import after_work from '../../../../data-preprocess/data/detailgraph/all_work_condition_3.json';
-import after_age from '../../../../data-preprocess/data/detailgraph/all_age_condition_3.json';
-//import after_gender from '../../../../data-preprocess/data/detailgraph/all_gender_condition_3.json';
+//import after_work from '../../../../data-preprocess/data/detailgraph/all_work_control_31.json';
+//import after_age from '../../../../data-preprocess/data/detailgraph/all_age_control_31.json';
+import after_gender from '../../../../data-preprocess/data/detailgraph/all_gender_control_31.json';
 
 
 export default {
@@ -56,8 +56,8 @@ export default {
     //this.getEduData()
     //this.getMarriageData()
     //this.getWorkData()
-    this.getAfterAgeData()
-    //this.getAfterGenderData()
+    //this.getAfterAgeData()
+    this.getAfterGenderData()
   },
   methods: {
     /*
@@ -164,7 +164,7 @@ export default {
       var data = [trace1, trace2];
       Plotly.newPlot('secondDetailsAlign', data, layout)
     },*/
-
+/*
         getAfterAgeData() {
 
           var ageAfterGroup_length = after_age["age_group"].length
@@ -191,6 +191,8 @@ export default {
             //mode: 'markers',
             type: 'bar',
             name: 'Depressed',
+            text: this.PlotData_AfterAgeCondition.y.map(String),
+            textPosition: 'auto',
             marker: {
               color: 'rgb(211,59,44)',
             }
@@ -201,6 +203,8 @@ export default {
             y: this.PlotData_AfterAgeControl.y,
             type: 'bar',
             name: 'Non-Depressed',
+            text: this.PlotData_AfterAgeControl.y.map(String),
+            textPosition: 'auto',
             marker: {
               color: 'rgb(37,98,166)'
             }
@@ -262,7 +266,7 @@ export default {
           }
           var data = [trace10, trace11];
           Plotly.newPlot('secondDetailsAlign', data, layout)
-        },
+        },*/
 
     /*
     getGenderData() {
@@ -373,6 +377,114 @@ export default {
       Plotly.newPlot('secondDetailsAlign', data, layout)
     },*/
 
+    getAfterGenderData() {
+      var genderAfterGroup_length = after_gender["gender_group"].length
+      console.log(genderAfterGroup_length)
+
+      for (var genderAfterGroup_number = 0; genderAfterGroup_number < genderAfterGroup_length; genderAfterGroup_number++) {
+        if (after_gender["gender_group"][genderAfterGroup_number]["type"] === "depress") {
+          this.PlotData_AfterGenderCondition.x.push(after_gender["gender_group"][genderAfterGroup_number]["gender"])
+          this.PlotData_AfterGenderCondition.y.push(after_gender["gender_group"][genderAfterGroup_number]["number"])
+        } else {
+          this.PlotData_AfterGenderControl.x.push(after_gender["gender_group"][genderAfterGroup_number]["gender"])
+          this.PlotData_AfterGenderControl.y.push(after_gender["gender_group"][genderAfterGroup_number]["number"])
+        }
+      }
+      console.log(this.PlotData_AfterGenderCondition)
+      console.log(this.PlotData_AfterGenderControl)
+      this.drawAfterGenderDetailsAlign()
+    },
+
+    drawAfterGenderDetailsAlign() {
+      var trace13 = {
+        x: this.PlotData_AfterGenderCondition.x,
+        y: this.PlotData_AfterGenderCondition.y,
+        //mode: 'markers',
+        type: 'bar',
+        name: 'Depressed',
+        width: 0.2,
+        //gap: '20%',
+        //orientation: 'h',
+        text: this.PlotData_AfterGenderCondition.y.map(String),
+        textposition: 'auto',
+        marker: {
+          color: 'rgb(211,59,44)',
+        }
+      };
+      var trace14 = {
+        x: this.PlotData_AfterGenderControl.x,
+        y: this.PlotData_AfterGenderControl.y,
+        type: 'bar',
+        name: 'Non-Depressed',
+        //orientation: 'h',
+        width: 0.2,
+        //gap: '-20%',
+        text: this.PlotData_AfterGenderControl.y.map(String),
+        textPosition: 'auto',
+        marker: {
+          color: 'rgb(37,98,166)',
+        }
+      };
+
+      var layout = {
+        barmode:'group',
+
+        margin: {
+          r: 50,
+          t: 20,
+          pad: 0
+        },
+
+        height: inherits,
+        width: 475,
+
+        showlegend: true,
+        legend: {
+          x: 1,
+          xanchor: 'right',
+          y: 1
+        },
+
+        title: {
+          text: '',
+          font: {
+            family: 'Helvetica',
+            size: 18
+          },
+          xref: 'paper',
+          x: 0.05,
+        },
+        xaxis: {
+          tickmode: "array",
+          tickvals: [1, 2],
+          ticktext: ['Female', 'Male'],
+          tickangle: -45,
+          tickSize: 15,
+          title: {
+            text: 'Gender',
+            font: {
+              family: 'Helvetica',
+              size: 16,
+              color: '#7f7f7f'
+            }
+          },
+        },
+        yaxis: {
+          title: {
+            text: 'The Number of People',
+            font: {
+              family: 'Helvetica',
+              size: 16,
+              color: '#7f7f7f'
+            }
+          }
+        }
+
+      }
+      var data = [trace13, trace14];
+      Plotly.newPlot('secondDetailsAlign', data, layout)
+    },
+
 /*
     getAfftypeData() {
       var afftypeGroup_length = after_afftype["afftype"].length
@@ -380,7 +492,7 @@ export default {
 
       for (var afftypeGroup_number = 0; afftypeGroup_number < afftypeGroup_length; afftypeGroup_number++) {
         //this.PlotData_Afftype.id.push(after_afftype["afftype"][afftypeGroup_number]["number"])
-        if (after_afftype["afftype"][afftypeGroup_number]["number"] === 'condition_3') {
+        if (after_afftype["afftype"][afftypeGroup_number]["number"] === 'control_31') {
           this.PlotData_Afftype_3.x.push(after_afftype["afftype"][afftypeGroup_number]["madrs1"])
           this.PlotData_Afftype_3.y.push(after_afftype["afftype"][afftypeGroup_number]["madrs2"])
         } else if (after_afftype["afftype"][afftypeGroup_number]["afftype"] === 1.0) {
@@ -566,7 +678,7 @@ export default {
 
   for (var eduGroup_number = 0; eduGroup_number < eduGroup_length; eduGroup_number++) {
     //this.PlotData_Afftype.id.push(after_afftype["afftype"][afftypeGroup_number]["number"])
-    if (after_edu["edu"][eduGroup_number]["number"] === 'condition_3') {
+    if (after_edu["edu"][eduGroup_number]["number"] === 'control_31') {
       this.PlotData_Edu_3.x.push(after_edu["edu"][eduGroup_number]["madrs1"])
       this.PlotData_Edu_3.y.push(after_edu["edu"][eduGroup_number]["madrs2"])
     } else if (after_edu["edu"][eduGroup_number]["edu"] === "6-10") {
@@ -733,7 +845,7 @@ export default {
 
       for (var marriageGroup_number = 0; marriageGroup_number < marriageGroup_length; marriageGroup_number++) {
         //this.PlotData_Afftype.id.push(after_afftype["afftype"][afftypeGroup_number]["number"])
-        if (after_marriage["marriage"][marriageGroup_number]["number"] === 'condition_3') {
+        if (after_marriage["marriage"][marriageGroup_number]["number"] === 'control_31') {
           this.PlotData_Marriage_3.x.push(after_marriage["marriage"][marriageGroup_number]["madrs1"])
           this.PlotData_Marriage_3.y.push(after_marriage["marriage"][marriageGroup_number]["madrs2"])
         } else if (after_marriage["marriage"][marriageGroup_number]["marriage"] === 1.0) {
@@ -879,7 +991,7 @@ export default {
 
       for (var workGroup_number = 0; workGroup_number < workGroup_length; workGroup_number++) {
         //this.PlotData_Afftype.id.push(after_afftype["afftype"][afftypeGroup_number]["number"])
-        if (after_work["work"][workGroup_number]["number"] === 'condition_3') {
+        if (after_work["work"][workGroup_number]["number"] === 'control_31') {
           this.PlotData_Work_3.x.push(after_work["work"][workGroup_number]["madrs1"])
           this.PlotData_Work_3.y.push(after_work["work"][workGroup_number]["madrs2"])
         } else if (after_work["work"][workGroup_number]["work"] === 1.0) {
