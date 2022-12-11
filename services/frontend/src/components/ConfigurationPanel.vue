@@ -32,7 +32,9 @@
           <v-col cols="12" md="12" style=" border-collapse :collapse;border-width:0px;padding-top: 0%;padding-bottom: 0%;">
             <v-spacer />
             <div>
-              Select a person from activity level graph
+              <div class="text-center">
+              Select start time (t0) for pattern recognition
+            </div>
             </div>
             <v-spacer />
         </v-col>
@@ -55,10 +57,10 @@
           <select name="attributes">
             <option value="0"> Age</option>
             <option value="1"> Gender</option>
-            <option value="2"> Depression Type</option>
+            <!--<option value="2"> Depression Type</option>
             <option value="3"> Education Years</option>
             <option value="4"> Marital Status</option>
-            <option value="5"> Work Status</option>
+            <option value="5"> Work Status</option>-->
           </select>
 
           <DetailsAlign/>
