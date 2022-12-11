@@ -7,11 +7,12 @@
 
 <script>
 import Plotly, {inherits} from 'plotly.js/dist/plotly';
-//import all_age from '../../../../data-preprocess/data/detailgraph/all_age.json';
+import all_age from '../../../../data-preprocess/data/detailgraph/all_age.json';
 //import all_gender from '../../../../data-preprocess/data/detailgraph/all_gender.json';
 //import after_afftype from '../../../../data-preprocess/data/detailgraph/all_afftype_condition_3.json';
 //import after_edu from '../../../../data-preprocess/data/detailgraph/all_edu_condition_3.json';
 //import after_marriage from '../../../../data-preprocess/data/detailgraph/all_marriage_condition_3.json';
+
 //import after_work from '../../../../data-preprocess/data/detailgraph/all_work_condition_3.json';
 import after_age from '../../../../data-preprocess/data/detailgraph/all_age_condition_3.json';
 //import after_gender from '../../../../data-preprocess/data/detailgraph/all_gender_condition_3.json';
@@ -51,7 +52,7 @@ export default {
 
   },
   mounted() {
-    //this.getAgeData()
+    this.getAgeData()
     //this.getGenderData()
     //this.getAfftypeData()
     //this.getEduData()
@@ -61,7 +62,7 @@ export default {
     //this.getAfterGenderData()
   },
   methods: {
-/*
+    
     getAgeData() {
 
       var ageGroup_length = all_age["age_group"].length
@@ -88,6 +89,8 @@ export default {
         //mode: 'markers',
         type: 'bar',
         name: 'Depressed',
+        text: this.PlotData_AgeCondition.y.map(String),
+        textPosition: 'auto',
         marker: {
           color: 'rgb(211,59,44)',
         }
@@ -98,6 +101,8 @@ export default {
         y: this.PlotData_AgeControl.y,
         type: 'bar',
         name: 'Non-Depressed',
+        text: this.PlotData_AgeControl.y.map(String),
+        textPosition: 'auto',
         marker: {
           color: 'rgb(37,98,166)'
         }
@@ -105,6 +110,16 @@ export default {
 
       var layout = {
         barmode:'group',
+
+        margin: {
+          r: 50,
+          t: 20,
+          pad: 0
+        },
+        //barmode:'group',
+
+        height: inherits,
+        width: 475,
         title: {
           text: '',
           font: {
@@ -150,7 +165,7 @@ export default {
       }
       var data = [trace1, trace2];
       Plotly.newPlot('secondDetailsAlign', data, layout)
-    },*/
+    },
 
         getAfterAgeData() {
 
@@ -269,12 +284,12 @@ export default {
         type: 'bar',
         name: 'Depressed',
         width: 0.2,
-        gap: '20%',
+        //gap: '20%',
         //orientation: 'h',
         text: this.PlotData_GenderCondition.y.map(String),
         textposition: 'auto',
         marker: {
-          color: 'rgb(102, 178,   255)',
+          color: 'rgb(211,59,44)',
         }
       };
       var trace4 = {
@@ -284,24 +299,25 @@ export default {
         name: 'Non-Depressed',
         //orientation: 'h',
         width: 0.2,
-        gap: '-20%',
+        //gap: '-20%',
         text: this.PlotData_GenderControl.y.map(String),
         textPosition: 'auto',
         marker: {
-          color: 'rgb(204, 153, 255)',
+          color: 'rgb(37,98,166)',
         }
       };
 
       var layout = {
-        margin: {
-          r: 40,
-          t: 20,
-          pad: 5
-        },
         barmode:'group',
 
+        margin: {
+          r: 50,
+          t: 20,
+          pad: 0
+        },
+
         height: inherits,
-        width: 500,
+        width: 475,
 
         showlegend: true,
         legend: {
@@ -336,7 +352,7 @@ export default {
         },
         yaxis: {
           title: {
-            text: 'Count',
+            text: 'The Number of People',
             font: {
               family: 'Helvetica',
               size: 16,
@@ -471,10 +487,15 @@ export default {
 
 
       var layout = {
+        margin: {
+          r: 50,
+          t: 20,
+          pad: 0
+        },
         barmode:'group',
 
         height: inherits,
-        width: 500,
+        width: 475,
         legend: {
           "orientation": "h",
           x: 0,
@@ -531,7 +552,7 @@ export default {
 
 
 ///////////////////////////////
-    /*
+   /*
     getEduData() {
   var eduGroup_length = after_edu["edu"].length
   console.log(eduGroup_length)
@@ -633,8 +654,16 @@ export default {
   var layout = {
     barmode:'group',
 
-    height: inherits,
-    width: 500,
+    margin: {
+          r: 50,
+          t: 20,
+          pad: 0
+        },
+        //barmode:'group',
+
+        height: inherits,
+        width: 475,
+
     legend: {
       "orientation": "h",
       x: 0,
@@ -775,8 +804,15 @@ export default {
       var layout = {
         barmode:'group',
 
+        margin: {
+          r: 50,
+          t: 20,
+          pad: 0
+        },
+        //barmode:'group',
+
         height: inherits,
-        width: 500,
+        width: 475,
         legend: {
           "orientation": "h",
           x: 0,
@@ -914,8 +950,15 @@ export default {
       var layout = {
         barmode:'group',
 
+        margin: {
+          r: 50,
+          t: 20,
+          pad: 0
+        },
+        //barmode:'group',
+
         height: inherits,
-        width: 500,
+        width: 475,
         legend: {
           "orientation": "h",
           x: 0,
@@ -965,8 +1008,8 @@ export default {
       }
       var data = [trace5, trace6, trace8, trace9];
       Plotly.newPlot('secondDetailsAlign', data, layout)
-    },
-    */
+    },*/
+    
 
     /*
     drawDetailsAlign() {
