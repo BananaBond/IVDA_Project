@@ -97,139 +97,175 @@ export default {
 
       //UNCOMMENT FOR NORMAL GRAPH
         
-      // for (var cond_number=0; cond_number<depressed_length; cond_number++){
-      //   var index = parseInt(depressed["files"][cond_number]["file"].split("_")[1])
-      //   console.log(index)
-      //   condition[index-1] = {
-      //     x: times["time"],
-      //     y: depressed["files"][cond_number]["activity_level"],
-      //     mode: 'lines',
-      //     type: 'scatter',
-      //     hovertemplate: '%{x}' + ', %{y:.0f}',
-      //     line: {
-      //       color: 'rgba(211,59,44, 0.6)',
-      //       width: 1
-      //     },
-      //     name: "condition " + index,
-      //     showlegend: false
-      //   }
-      // }
-
       for (var cond_number=0; cond_number<depressed_length; cond_number++){
         var index = parseInt(depressed["files"][cond_number]["file"].split("_")[1])
-        if (index == 1  || index == 11 || index == 15 || index == 18 || index == 19 || index == 21 || index == 5 || 
-        index == 6 || index == 7 || index == 8){
-          condition[index-1] = {
-            x: times["time"],
-            y: depressed["files"][cond_number]["activity_level"],
-            mode: 'lines',
-            type: 'scatter',
-            hovertemplate: '%{x}' + ', %{y:.0f}',
-            line: {
-              color: 'rgba(129, 183, 78,0.8)',
-              width: 2
-            },
-            name: "condition " + index,
-            showlegend: false
-          }
+        console.log(index)
+        condition[index-1] = {
+          x: times["time"],
+          y: depressed["files"][cond_number]["activity_level"],
+          mode: 'lines',
+          type: 'scatter',
+          hovertemplate: '%{x}' + ', %{y:.0f}',
+          line: {
+            color: 'rgba(211,59,44, 0.6)',
+            width: 1
+          },
+          name: "condition " + index,
+          showlegend: false
         }
-        else if (index == 2){
-          condition[index-1] = {
-            x: times["time"],
-            y: depressed["files"][cond_number]["activity_level"],
-            mode: 'lines',
-            type: 'scatter',
-            hovertemplate: '%{x}' + ', %{y:.0f}',
-            line: {
-              color: 'rgb(0,100,0, 0.8)',
-              width: 4
-            },
-            name: "condition " + index,
-            showlegend: false
-          }
-        }
-        else{
-          condition[index-1] = {
-            x: times["time"],
-            y: depressed["files"][cond_number]["activity_level"],
-            mode: 'lines',
-            type: 'scatter',
-            hovertemplate: '%{x}' + ', %{y:.0f}',
-            line: {
-              color: 'rgba(169,169,169,0.5)',
-              width: 1
-            },
-            name: "condition " + index,
-            showlegend: false
-          }
-        }
-    }
+      }
+
+    //   for (var cond_number=0; cond_number<depressed_length; cond_number++){
+    //     var index = parseInt(depressed["files"][cond_number]["file"].split("_")[1])
+    //     if (index == 12 || index == 16 || index == 19 || index == 20 || index == 22 || index == 6 || 
+    //     index == 7 || index == 8 || index == 9){
+    //       condition[index-1] = {
+    //         x: times["time"],
+    //         y: depressed["files"][cond_number]["activity_level"],
+    //         mode: 'lines',
+    //         type: 'scatter',
+    //         hovertemplate: '%{x}' + ', %{y:.0f}',
+    //         line: {
+    //           color: 'rgba(129, 183, 78,0.8)',
+    //           width: 2
+    //         },
+    //         name: "condition " + index,
+    //         showlegend: false
+    //       }
+    //     }
+    //     else if (index == 3){
+    //       condition[index-1] = {
+    //         x: times["time"],
+    //         y: depressed["files"][cond_number]["activity_level"],
+    //         mode: 'lines',
+    //         type: 'scatter',
+    //         hovertemplate: '%{x}' + ', %{y:.0f}',
+    //         line: {
+    //           color: 'rgb(0,100,0, 0.8)',
+    //           width: 4
+    //         },
+    //         name: "condition " + index,
+    //         showlegend: false
+    //       }
+    //     }
+    //     else{
+    //       condition[index-1] = {
+    //         x: times["time"],
+    //         y: depressed["files"][cond_number]["activity_level"],
+    //         mode: 'lines',
+    //         type: 'scatter',
+    //         hovertemplate: '%{x}' + ', %{y:.0f}',
+    //         line: {
+    //           color: 'rgba(169,169,169,0.5)',
+    //           width: 1
+    //         },
+    //         name: "condition " + index,
+    //         showlegend: false
+    //       }
+    //     }
+    // }
 
       var non_depressed_length = non_depressed["files"].length
 
       //UNCOMMENT FOR NORMAL GRAPH
-      // for (var control_number=0; control_number<non_depressed_length; control_number++){
-      //   var ind = parseInt(non_depressed["files"][control_number]["file"].split("_")[1])
-      //   console.log(ind)
-      //   control[ind-1] = {
-      //     x: times["time"],
-      //     y: non_depressed["files"][control_number]["activity_level"],
-      //     mode: 'lines',
-      //     type: 'scatter',
-      //     hovertemplate: '%{x}' + ', %{y:.0f}',
-      //     hoverinfo: "control "+ ind,
-      //     line: {
-      //       color: 'rgba(37,98,166, 0.6)',
-      //       width: 1
-      //     },
-      //     name: "control " + ind,
-      //     showlegend: false
-      //   }
-      // }
-      
       for (var control_number=0; control_number<non_depressed_length; control_number++){
         var ind = parseInt(non_depressed["files"][control_number]["file"].split("_")[1])
         console.log(ind)
-        if (index == 0  || index == 2 || index == 11){
-          control[ind-1] = {
-            x: times["time"],
-            y: non_depressed["files"][control_number]["activity_level"],
-            mode: 'lines',
-            type: 'scatter',
-            hovertemplate: '%{x}' + ', %{y:.0f}',
-            hoverinfo: "control "+ ind,
-            line: {
-              color: 'rgba(129, 183, 78, 0.8)',
-              width: 2
-            },
-            name: "control " + ind,
-            showlegend: false
-          }
-        }
-        else{
-          control[ind-1] = {
-            x: times["time"],
-            y: non_depressed["files"][control_number]["activity_level"],
-            mode: 'lines',
-            type: 'scatter',
-            hovertemplate: '%{x}' + ', %{y:.0f}',
-            hoverinfo: "control "+ ind,
-            line: {
-              color: 'rgba(169,169,169,0.5)',
-              width: 1
-            },
-            name: "control " + ind,
-            showlegend: false
-          }
+        control[ind-1] = {
+          x: times["time"],
+          y: non_depressed["files"][control_number]["activity_level"],
+          mode: 'lines',
+          type: 'scatter',
+          hovertemplate: '%{x}' + ', %{y:.0f}',
+          hoverinfo: "control "+ ind,
+          line: {
+            color: 'rgba(37,98,166, 0.6)',
+            width: 1
+          },
+          name: "control " + ind,
+          showlegend: false
         }
       }
+
+      
+      var index_ = parseInt(non_depressed["files"][3]["file"].split("_")[1])
+      console.log(ind)
+      control[3] = {
+        x: times["time"],
+        y: non_depressed["files"][index_]["activity_level"],
+        mode: 'lines',
+        type: 'scatter',
+        hovertemplate: '%{x}' + ', %{y:.0f}',
+        hoverinfo: "control "+ 1,
+        line: {
+          color: 'rgba(37,98,166, 0.6)',
+          width: 1
+        },
+        name: "Non-depressed",
+        showlegend: true
+      }
+
+      var index__ = parseInt(depressed["files"][4]["file"].split("_")[1])
+      // console.log(ind)
+      condition[4] = {
+        x: times["time"],
+        y: depressed["files"][index__]["activity_level"],
+        mode: 'lines',
+        type: 'scatter',
+        hovertemplate: '%{x}' + ', %{y:.0f}',
+        hoverinfo: "condition "+ 4,
+        line: {
+          color: 'rgba(211,59,44, 0.6)',
+          width: 1
+        },
+        name: "Depressed",
+        showlegend: true
+      }
+      
+      
+      // for (var control_number=0; control_number<non_depressed_length; control_number++){
+      //   var ind = parseInt(non_depressed["files"][control_number]["file"].split("_")[1])
+      //   console.log(ind)
+      //   if (index == 1  || index == 3 || index == 12){
+      //     control[ind-1] = {
+      //       x: times["time"],
+      //       y: non_depressed["files"][control_number]["activity_level"],
+      //       mode: 'lines',
+      //       type: 'scatter',
+      //       hovertemplate: '%{x}' + ', %{y:.0f}',
+      //       hoverinfo: "control "+ ind,
+      //       line: {
+      //         color: 'rgba(129, 183, 78, 0.8)',
+      //         width: 2
+      //       },
+      //       name: "control " + ind,
+      //       showlegend: false
+      //     }
+      //   }
+      //   else{
+      //     control[ind-1] = {
+      //       x: times["time"],
+      //       y: non_depressed["files"][control_number]["activity_level"],
+      //       mode: 'lines',
+      //       type: 'scatter',
+      //       hovertemplate: '%{x}' + ', %{y:.0f}',
+      //       hoverinfo: "control "+ ind,
+      //       line: {
+      //         color: 'rgba(169,169,169,0.5)',
+      //         width: 1
+      //       },
+      //       name: "control " + ind,
+      //       showlegend: false
+      //     }
+      //   }
+      // }
       
       var data = []
       data = data.concat(control)
       data = data.concat(condition)
 
       //UNCOMMENT FOR AVERAGE
-      // import avg from '../../../../data-preprocess/data/overview/overall-avg.json';
+      
       // data.push({
       //   x: times["time"],
       //   y: avg["depressed"]["activity_level"],
@@ -238,11 +274,12 @@ export default {
       //   hovertemplate: '%{x}' + ', %{y:.0f}',
       //   line: {
       //     color: 'rgb(211,59,44)',
-      //     width: 3
+      //     width: 4
       //   },
-      //   name: "control average",
-      //   showlegend: false
+      //   name: "Depressed average",
+      //   showlegend: true
       // })
+      
 
       // data.push({
       //   x: times["time"],
@@ -252,16 +289,21 @@ export default {
       //   hovertemplate: '%{x}' + ', %{y:.0f}',
       //   line: {
       //     color: 'rgb(37,98,166)',
-      //     width: 3
+      //     width: 4
       //   },
-      //   name: "control average",
-      //   showlegend: false
+      //   name: "Non-depressed average",
+      //   showlegend: true
       // })
 
       console.log('data length', data)
 
 
       var layout = {
+        legend: {
+          x: 1,
+          xanchor: 'right',
+          y: 1
+        },
         margin: {
           r: 20,
           t: 20,
@@ -284,18 +326,18 @@ export default {
               size: 16,
               color: '#7f7f7f'
           }},
-          // tickvals:['00:00:00','01:00:00','02:00:00','03:00:00','04:00:00','05:00:00','06:00:00','07:00:00','08:00:00'
-          // ,'09:00:00','10:00:00','11:00:00','12:00:00','13:00:00','14:00:00','15:00:00','16:00:00','17:00:00','18:00:00'
-          // ,'19:00:00','20:00:00','21:00:00','22:00:00','23:00:00'],
-          tickvals:['22:00:00','23:00:00', '00:00:00','01:00:00','02:00:00','03:00:00','04:00:00','05:00:00','06:00:00','07:00:00','08:00:00'
+          tickvals:['00:00:00','01:00:00','02:00:00','03:00:00','04:00:00','05:00:00','06:00:00','07:00:00','08:00:00'
           ,'09:00:00','10:00:00','11:00:00','12:00:00','13:00:00','14:00:00','15:00:00','16:00:00','17:00:00','18:00:00'
-          ,'19:00:00','20:00:00','21:00:00'],
-          // ticktext: ['00:00','01:00','02:00','03:00','04:00','05:00','06:00','07:00','08:00'
-          // ,'09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00'
-          // ,'19:00','20:00','21:00','22:00','23:00']
-          ticktext: ['22:00','23:00','00:00','01:00','02:00','03:00','04:00','05:00','06:00','07:00','08:00'
+          ,'19:00:00','20:00:00','21:00:00','22:00:00','23:00:00'],
+          // tickvals:['22:00:00','23:00:00', '00:00:00','01:00:00','02:00:00','03:00:00','04:00:00','05:00:00','06:00:00','07:00:00','08:00:00'
+          // ,'09:00:00','10:00:00','11:00:00','12:00:00','13:00:00','14:00:00','15:00:00','16:00:00','17:00:00','18:00:00'
+          // ,'19:00:00','20:00:00','21:00:00'],
+          ticktext: ['00:00','01:00','02:00','03:00','04:00','05:00','06:00','07:00','08:00'
           ,'09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00'
-          ,'19:00','20:00','21:00']
+          ,'19:00','20:00','21:00','22:00','23:00']
+          // ticktext: ['22:00','23:00','00:00','01:00','02:00','03:00','04:00','05:00','06:00','07:00','08:00'
+          // ,'09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00'
+          // ,'19:00','20:00','21:00']
       },
       yaxis: {
           title: {

@@ -75,7 +75,7 @@ export default {
       Object.keys(activity_level["boxplot_data"]).forEach(time => {
         // var time_str = time.split(':')[1]
           var new_trace = {
-              x: "00:00",
+              x: time,
               y: activity_level["boxplot_data"][time],
               type: 'box',
               name: time.key,
